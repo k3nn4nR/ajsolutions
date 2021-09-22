@@ -21,8 +21,8 @@
 </head>
 <body>
     <div id="app">
-        <v-app>
-            <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <v-app id="inspire">
+            <!-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
                 <div class="container">
                     <a class="navbar-brand" href="{{ url('/') }}">
                         {{ config('app.name', 'Laravel') }}
@@ -32,14 +32,14 @@
                     </button>
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <!-- Left Side Of Navbar -->
+                        <!-- Left Side Of Navbar ->
                         <ul class="navbar-nav mr-auto">
 
                         </ul>
 
-                        <!-- Right Side Of Navbar -->
+                        <!-- Right Side Of Navbar ->
                         <ul class="navbar-nav ml-auto">
-                            <!-- Authentication Links -->
+                            <!-- Authentication Links ->
                             @guest
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -71,11 +71,32 @@
                         </ul>
                     </div>
                 </div>
-            </nav>
-
-            <main class="py-4">
-                @yield('content')
-            </main>
+            </nav> -->
+            <template>
+                <div>
+                    <v-system-bar app>
+                        <v-spacer></v-spacer>
+                        <v-icon>mdi-square</v-icon>
+                        <v-icon>mdi-circle</v-icon>
+                        <v-icon>mdi-triangle</v-icon>
+                    </v-system-bar>
+                    <v-navigation-drawer app >
+                        <v-sheet color="grey lighten-4" class="pa-4" >
+                            <v-avatar class="mb-4" color="grey darken-1" size="64" ></v-avatar>
+                            <div>{{ Auth::user()->email }}</div>
+                        </v-sheet>
+                        <v-divider></v-divider>
+                        <sidebar-list :user="{{json_encode(Auth::user())}}" :permissions="{{json_encode(Auth::user()->permissions)}}" :roles="{{json_encode(Auth::user()->roles)}}"/>
+                    </v-navigation-drawer>
+                    <v-main>
+                        <v-container class="py-8 px-6" fluid >
+                            <v-responsive :aspect-ratio="16/9">
+                                @yield('content')
+                            </v-responsive>
+                        </v-container>
+                    </v-main>
+                </div>
+            </template>
         </v-app>
     </div>
 </body>
