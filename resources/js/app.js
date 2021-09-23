@@ -21,6 +21,12 @@ import Vuetify from '../plugins/vuetify';
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('proyecto-calendario', require('./components/Proyectos/Calendario.vue').default);
+Vue.component('sidebar-list', require('./components/SidebarList.vue').default);
+
+//trabajadores
+Vue.component('trabajadores-list', require('./components/Trabajadores/Listado.vue').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

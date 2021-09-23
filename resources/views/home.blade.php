@@ -18,7 +18,7 @@
                 </div>
             </div> -->
 
-            <example-component/>
+            <proyecto-calendario/>
         </div>
     </div>
 </div>

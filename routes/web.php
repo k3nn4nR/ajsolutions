@@ -19,7 +19,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/role', 'RoleController@listar');
-Route::post('role', 'RoleController@store');
-Route::put('role', 'RoleController@update');
+Route::middleware('auth')->group(function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+
+    Route::name('trabajador.')->group(function () {
+        Route::get('/trabajador','TrabajadorController@mainView')->name('view');
+        Route::get('/trabajadores','TrabajadorController@index')->name('index');
+    });
+});
