@@ -1,4 +1,5 @@
 window._ = require('lodash');
+import Swal from 'sweetalert';
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -9,7 +10,7 @@ window._ = require('lodash');
 try {
     window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('jquery');
-
+    window.Swal = require('sweetalert');
     require('bootstrap');
 } catch (e) {}
 

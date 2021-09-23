@@ -10,4 +10,9 @@ class Evaluacion extends Model
     use SoftDeletes;
     protected $table = "evaluaciones";
     protected $fillable = ['evaluacion'];
+
+    public function preguntas()
+    {
+        return $this->hasMany('App\Pregunta');
+    }
 }

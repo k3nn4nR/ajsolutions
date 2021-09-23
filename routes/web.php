@@ -39,4 +39,23 @@ Route::middleware('auth')->group(function () {
         Route::post('/permission','SystemController@permissionStore');
     });
 
+    Route::name('evaluacion.')->group(function () {
+        Route::get('/evaluaciones','EvaluacionController@evaluacionIndex');
+        Route::get('/evaluacion','EvaluacionController@mainView');
+        Route::post('/evaluacion','EvaluacionController@evaluacionStore');
+        Route::delete('evaluacion/{evaluacion}','EvaluacionController@evaluacionDestroy');
+    });
+
+    Route::name('factor.')->group(function () {
+        Route::get('/factores','EvaluacionController@factorIndex');
+        Route::post('/factor','EvaluacionController@factorStore');
+        Route::delete('factor/{factor}','EvaluacionController@factorDestroy');
+    });
+
+    Route::name('pregunta.')->group(function () {
+        Route::get('/preguntas','EvaluacionController@preguntaIndex');
+        Route::post('/pregunta','EvaluacionController@preguntaStore');
+        Route::delete('pregunta/{pregunta}','EvaluacionController@preguntaDestroy');
+    });
+
 });
