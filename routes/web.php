@@ -38,5 +38,5 @@ Route::middleware('auth')->group(function () {
         Route::get('/permissions','SystemController@permissionIndex');
         Route::post('/permission','SystemController@permissionStore');
     });
-    
+
 });

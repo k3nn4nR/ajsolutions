@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTrabajadorsTable extends Migration
+class CreateEvaluacionesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateTrabajadorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('trabajadors', function (Blueprint $table) {
+        Schema::create('evaluaciones', function (Blueprint $table) {
             $table->id();
+            $table->string('evaluacion');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -26,6 +28,6 @@ class CreateTrabajadorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('trabajadors');
+        Schema::dropIfExists('evaluaciones');
     }
 }
