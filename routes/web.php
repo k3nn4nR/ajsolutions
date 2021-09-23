@@ -26,4 +26,17 @@ Route::middleware('auth')->group(function () {
         Route::get('/trabajador','TrabajadorController@mainView')->name('view');
         Route::get('/trabajadores','TrabajadorController@index')->name('index');
     });
+
+    Route::get('/sistema', 'SystemController@mainView');
+
+    Route::name('role.')->group(function () {
+        Route::get('/roles','SystemController@roleIndex');
+        Route::post('/role','SystemController@roleStore');
+    });
+
+    Route::name('permission.')->group(function () {
+        Route::get('/permissions','SystemController@permissionIndex');
+        Route::post('/permission','SystemController@permissionStore');
+    });
+    
 });

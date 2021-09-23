@@ -22,7 +22,8 @@
                 ['fas fa-project-diagram', 'Proyectos',''],
                 ['fas fa-puzzle-piece', 'Evaluaciones',''],
                 ['fas fa-chart-bar', 'Reportes',''],
-                ['fas fa-users', 'Usuarios',''],
+                ['fas fa-cog', 'Configuracion','/sistema'],
+                ['fas fa-power-off', 'Cerrar Sesion',''],
             ],
         }),
         mounted(){
@@ -36,12 +37,13 @@
                         if(role.name)
                         {
                             this.links.push(
-                                ['mdi-inbox-arrow-down', 'Inicio'],
-                                ['mdi-send', 'Trabajadores'],
-                                ['mdi-delete', 'Proyectos'],
-                                ['mdi-delete', 'Evaluaciones'],
-                                ['mdi-alert-octagon', 'Reporte de Proyectos'],
-                                ['mdi-alert-octagon', 'Reporte de Trabajadores'],
+                                ['fas fa-home', 'Inicio','/home'],
+                                ['fas fa-hard-hat', 'Trabajadores','/trabajador'],
+                                ['fas fa-project-diagram', 'Proyectos',''],
+                                ['fas fa-puzzle-piece', 'Evaluaciones',''],
+                                ['fas fa-chart-bar', 'Reportes',''],
+                                ['fas fa-users', 'Usuarios',''],
+                                ['fas fa-power-off', 'Cerrar Sesion',''],
                             )
                         }
                     });
@@ -49,7 +51,7 @@
             },
             page(url){
                 window.location.href = url;
-            }
+            },
         }
     }
 </script>

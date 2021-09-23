@@ -6,6 +6,7 @@
 
 require('./bootstrap');
 
+window.moment = require('moment');
 window.Vue = require('vue');
 import Vuetify from '../plugins/vuetify';
 
@@ -27,7 +28,15 @@ Vue.component('sidebar-list', require('./components/SidebarList.vue').default);
 //trabajadores
 Vue.component('trabajadores-list', require('./components/Trabajadores/Listado.vue').default);
 
+//roles
+Vue.component('role-list', require('./components/Roles/Listado.vue').default);
+Vue.component('role-create', require('./components/Roles/Crear.vue').default);
+Vue.component('permiso-asign', require('./components/Roles/AisgnarPermisos.vue').default);
 
+//permisos
+Vue.component('permiso-list', require('./components/Permisos/Listado.vue').default);
+Vue.component('permiso-create', require('./components/Permisos/Crear.vue').default);
+Vue.component('role-asign', require('./components/Permisos/AsignarRoles.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
