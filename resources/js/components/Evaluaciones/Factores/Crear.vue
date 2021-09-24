@@ -44,6 +44,7 @@
                 formData.append('descripcion',this.descripcion)
                 axios.post('/factor',formData).then(response=>{
                     this.dialog=false
+                    swal("Correcto!", "Factor registrada exitosamente", "success");
                     this.$emit('getData')
                 })
             }

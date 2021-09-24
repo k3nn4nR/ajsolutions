@@ -48,7 +48,7 @@
                 .then((willDelete) => {
                     if (!willDelete) return false
                     axios.delete('pregunta/'+item.id).then(response =>{
-                        swal("Eliminacion exitosa!")
+                        swal("Eliminacion de la Pregunta exitosa!")
                         this.getData()
                     }).catch(error =>{
                         var texto="";

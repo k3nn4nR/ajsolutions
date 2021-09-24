@@ -77,6 +77,7 @@
                 formData.append('ended_at',this.ended_at)
                 axios.post('/proyecto',formData).then(response=>{
                     this.dialog=false
+                    swal("Correcto!", "Proyecto registrado exitosamente", "success");
                     this.$emit('getData')
                 })
             },

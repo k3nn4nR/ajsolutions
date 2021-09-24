@@ -26,6 +26,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/trabajador','TrabajadorController@mainView')->name('view');
         Route::get('/trabajadores','TrabajadorController@index')->name('index');
         Route::post('/trabajador','TrabajadorController@store')->name('index');
+        Route::delete('/trabajador/{trabajador}','TrabajadorController@destroy');
     });
 
     Route::get('/sistema', 'SystemController@mainView');
@@ -65,6 +66,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/proyecto','ProyectoController@mainView')->name('view');
         Route::get('/proyectos','ProyectoController@index')->name('index');
         Route::post('/proyecto','ProyectoController@store')->name('index');
+        Route::delete('/proyecto/{proyecto}','ProyectoController@destroy');
     });
     
 });

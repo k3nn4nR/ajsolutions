@@ -67,6 +67,7 @@
                 formData.append('factor',this.factor)
                 axios.post('/pregunta',formData).then(response=>{
                     this.dialog=false
+                    swal("Correcto!", "Pregunta registrada exitosamente", "success");
                     this.$emit('getData')
                 })
             },

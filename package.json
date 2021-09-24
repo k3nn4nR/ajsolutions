@@ -28,8 +28,10 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "apexcharts": "^3.28.3",
         "moment": "^2.29.1",
         "sweetalert": "^2.1.2",
+        "vue-apexcharts": "^1.6.2",
         "vuetify": "^2.5.8"
     }
 }

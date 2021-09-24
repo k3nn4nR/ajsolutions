@@ -98,6 +98,6 @@ class TrabajadorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Trabajador::find($id)->delete();
     }
 }

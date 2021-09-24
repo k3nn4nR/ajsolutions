@@ -95,6 +95,6 @@ class ProyectoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Proyecto::find($id)->delete();
     }
 }

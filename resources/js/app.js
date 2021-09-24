@@ -9,6 +9,8 @@ require('./bootstrap');
 window.moment = require('moment');
 window.Vue = require('vue');
 import Vuetify from '../plugins/vuetify';
+import ApexCharts from 'apexcharts';
+import VueApexCharts from 'vue-apexcharts';
 
 /**
  * The following block of code may be used to automatically register your
@@ -53,11 +55,19 @@ Vue.component('factor-create', require('./components/Evaluaciones/Factores/Crear
 Vue.component('pregunta-list', require('./components/Evaluaciones/Preguntas/Listado.vue').default);
 Vue.component('pregunta-create', require('./components/Evaluaciones/Preguntas/Crear.vue').default);
 
+//graficas
+Vue.component('trabajadores-anuales', require('./components/Trabajadores/Graficas/IngresoPorAnio.vue').default);
+Vue.component('trabajadores-estados', require('./components/Trabajadores/Graficas/Estado.vue').default);
 /**
+ * 
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+
+ Vue.use(VueApexCharts)
+
+ Vue.component('apexchart', VueApexCharts)
 
 const app = new Vue({
     vuetify: Vuetify,

@@ -83,6 +83,7 @@
                 formData.append('estado',this.estado)
                 axios.post('/trabajador',formData).then(response=>{
                     this.dialog=false
+                    swal("Correcto!", "Trabajador registrado exitosamente", "success");
                     this.$emit('getData')
                 })
             },

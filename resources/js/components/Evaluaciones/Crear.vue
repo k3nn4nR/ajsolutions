@@ -44,6 +44,7 @@
                 formData.append('evaluacion',this.evaluacion)
                 axios.post('/evaluacion',formData).then(response=>{
                     this.dialog=false
+                    swal("Correcto!", "Evaluacion registrada exitosamente", "success");
                     this.$emit('getData')
                 })
             }
