@@ -41,7 +41,6 @@ Route::middleware('auth')->group(function () {
         Route::post('/permission','SystemController@permissionStore');
     });
 
-<<<<<<< HEAD
     Route::name('evaluacion.')->group(function () {
         Route::get('/evaluaciones','EvaluacionController@evaluacionIndex');
         Route::get('/evaluacion','EvaluacionController@mainView');
@@ -62,7 +61,6 @@ Route::middleware('auth')->group(function () {
     });
 
 });
-=======
     Route::name('proyecto.')->group(function () {
         Route::get('/proyecto','ProyectoController@mainView')->name('view');
         Route::get('/proyectos','ProyectoController@index')->name('index');
@@ -70,4 +68,3 @@ Route::middleware('auth')->group(function () {
     });
     
 });
->>>>>>> master
