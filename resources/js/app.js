@@ -28,6 +28,12 @@ Vue.component('sidebar-list', require('./components/SidebarList.vue').default);
 //trabajadores
 Vue.component('trabajadores-list', require('./components/Trabajadores/Listado.vue').default);
 
+
+//proyecto
+Vue.component('proyectos-list', require('./components/Proyectos/Listado.vue').default);
+Vue.component('proyectos-create', require('./components/Proyectos/Crear.vue').default);
+
+
 //roles
 Vue.component('role-list', require('./components/Roles/Listado.vue').default);
 Vue.component('role-create', require('./components/Roles/Crear.vue').default);

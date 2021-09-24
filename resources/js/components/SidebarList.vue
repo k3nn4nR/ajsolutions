@@ -19,7 +19,7 @@
             links: [
                 ['fas fa-home', 'Inicio','/home'],
                 ['fas fa-hard-hat', 'Trabajadores','/trabajador'],
-                ['fas fa-project-diagram', 'Proyectos',''],
+                ['fas fa-project-diagram', 'Proyectos','/proyecto'],
                 ['fas fa-puzzle-piece', 'Evaluaciones',''],
                 ['fas fa-chart-bar', 'Reportes',''],
                 ['fas fa-cog', 'Configuracion','/sistema'],
