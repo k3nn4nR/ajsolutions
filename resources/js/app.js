@@ -27,6 +27,7 @@ Vue.component('sidebar-list', require('./components/SidebarList.vue').default);
 
 //trabajadores
 Vue.component('trabajadores-list', require('./components/Trabajadores/Listado.vue').default);
+Vue.component('trabajador-create', require('./components/Trabajadores/Crear.vue').default);
 
 
 //proyecto
