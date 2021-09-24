@@ -25,6 +25,7 @@ Route::middleware('auth')->group(function () {
     Route::name('trabajador.')->group(function () {
         Route::get('/trabajador','TrabajadorController@mainView')->name('view');
         Route::get('/trabajadores','TrabajadorController@index')->name('index');
+        Route::post('/trabajador','TrabajadorController@store')->name('index');
     });
 
     Route::get('/sistema', 'SystemController@mainView');

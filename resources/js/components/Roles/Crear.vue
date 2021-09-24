@@ -44,7 +44,9 @@
         },
         methods:{
             store(){
-                let formData = new FormData
+
+
+                let formData = new FormData //crea un objecto con los valores que indiques al metodo post
                 formData.append('name',this.name)
                 formData.append('guard_name',this.guard_name)
                 axios.post('/role',formData).then(response=>{
