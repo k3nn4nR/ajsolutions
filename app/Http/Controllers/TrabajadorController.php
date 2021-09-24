@@ -45,7 +45,15 @@ class TrabajadorController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        Trabajador::create([
+            "dni" => strtoupper($request->input('dni')),
+            "ape_paterno" => strtoupper($request->input('ape_paterno')),
+            "ape_materno" => strtoupper($request->input('ape_materno')),
+            "nombres" => strtoupper($request->input('name')),
+            "direccion" => strtoupper($request->input('direccion')),
+            "celular" => strtoupper($request->input('celular')),
+            "estado" => strtoupper($request->input('estado')),
+        ]);
     }
 
     /**

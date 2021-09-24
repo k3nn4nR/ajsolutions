@@ -4,8 +4,8 @@
             <v-list-item-icon>
                 <v-icon>{{ icon }}</v-icon>
             </v-list-item-icon>
-            <v-list-item-content>
-                <v-list-item-title @click="page(url)" >{{ text }}</v-list-item-title>
+            <v-list-item-content @click="page(url)">
+                <v-list-item-title  >{{ text }}</v-list-item-title>
             </v-list-item-content>
         </v-list-item>
     </v-list>
@@ -19,13 +19,8 @@
             links: [
                 ['fas fa-home', 'Inicio','/home'],
                 ['fas fa-hard-hat', 'Trabajadores','/trabajador'],
-<<<<<<< HEAD
-                ['fas fa-project-diagram', 'Proyectos',''],
                 ['fas fa-puzzle-piece', 'Evaluaciones','/evaluacion'],
-=======
                 ['fas fa-project-diagram', 'Proyectos','/proyecto'],
-                ['fas fa-puzzle-piece', 'Evaluaciones',''],
->>>>>>> master
                 ['fas fa-chart-bar', 'Reportes',''],
                 ['fas fa-cog', 'Configuracion','/sistema'],
                 ['fas fa-power-off', 'Cerrar Sesion',''],

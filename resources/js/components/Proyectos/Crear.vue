@@ -18,10 +18,20 @@
                 </v-row>
                 <v-row>
                     <v-col>
-                        <v-text-field v-model="started_at" label="Fecha de inicio" dense/>
+                        <v-menu ref="fecha_inicio_ref" v-model="fecha_inicio_ref" :close-on-content-click="false" transition="scale-transition" offset-y min-width="auto" >
+                            <template v-slot:activator="{ on, attrs }">
+                                <v-text-field v-model="started_at" dense label="Fecha de inicio" prepend-icon="mdi-calendar" readonly v-bind="attrs" v-on="on"/>
+                            </template>
+                            <v-date-picker ref="picker" dense v-model="date" @change="save_started_at"/>
+                        </v-menu>
                     </v-col>
                     <v-col>
-                        <v-text-field v-model="ended_at" label="Fecha de entrega" dense/>
+                        <v-menu ref="fecha_entrega_ref" v-model="fecha_entrega_ref" :close-on-content-click="false" transition="scale-transition" offset-y min-width="auto" >
+                            <template v-slot:activator="{ on, attrs }">
+                                <v-text-field v-model="ended_at" dense label="Fecha de entrega" prepend-icon="mdi-calendar" readonly v-bind="attrs" v-on="on"/>
+                            </template>
+                            <v-date-picker ref="picker" dense v-model="date" @change="save_ended_at"/>
+                        </v-menu>
                     </v-col>
                 </v-row>
                 
@@ -37,6 +47,9 @@
     export default {
         data(){
             return {
+                date:'',
+                fecha_inicio_ref:false,
+                fecha_entrega_ref:false,
                 dialog:false,
                 descripcion:'',
                 estado:'',
@@ -62,10 +75,20 @@
                 formData.append('estado',this.estado)
                 formData.append('started_at',this.started_at)
                 formData.append('ended_at',this.ended_at)
-                axios.post('/proyectos',formData).then(response=>{
+                axios.post('/proyecto',formData).then(response=>{
                     this.dialog=false
                     this.$emit('getData')
                 })
+            },
+            save_started_at(date){
+                this.started_at = this.date;
+                this.$refs.fecha_inicio_ref.save(date);
+                this.date = '';
+            },
+            save_ended_at(date){
+                this.ended_at = this.date;
+                this.$refs.fecha_entrega_ref.save(date);
+                this.date = '';
             },
         },
     }

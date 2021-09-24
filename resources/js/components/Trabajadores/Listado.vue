@@ -27,7 +27,7 @@
                     {text:'DNI',value:'dni'},
                     {text:'Apellido Paterno',value:'ape_paterno'},
                     {text:'Apellido Materno',value:'ape_materno'},
-                    {text:'Nombres',value:'name'},
+                    {text:'Nombres',value:'nombres'},
                     {text:'Direccion',value:'direccion'},
                     {text:'Celular',value:'celular'},
                     {text:'Estado',value:'estado'},

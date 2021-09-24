@@ -14,9 +14,8 @@ class CreateTrabajadoresTable extends Migration
     public function up()
     {
         Schema::create('trabajadores', function (Blueprint $table) {
-            
-            $table->string('dni')->primay();
-            $table->unsignedBigInteger('user_id');
+            $table->string('dni');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->string('ape_paterno');
             $table->string('ape_materno');
             $table->string('nombres');
@@ -25,6 +24,7 @@ class CreateTrabajadoresTable extends Migration
             $table->string('estado');
             $table->timestamps();
             $table->softdeletes();
+            $table->primary('dni');
             $table->foreign('user_id')->references('id')->on('users')->constrained()->onDelete('cascade');
         });
     }

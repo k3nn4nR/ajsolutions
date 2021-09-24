@@ -4,7 +4,7 @@
             <v-toolbar flat>
                 <v-toolbar-title>Proyectos</v-toolbar-title>
                 <v-spacer></v-spacer>
-                <v-field-text model="search" label="busqueda" dense /> 
+                <v-text-field v-model="search" label="Busqueda" dense /> 
                 <proyectos-create v-on:getData="getData()"/>
             </v-toolbar>
         </template>
@@ -23,8 +23,8 @@
         computed:{
             headers(){
                 return [
-                    {text:'Nombre',value:'descripcion'},
-                    {text:'Empresa',value:'estado'},
+                    {text:'Nombre',value:'Descripción'},
+                    {text:'Empresa',value:'Estado'},
                     {text:'Fecha de inicio',value:'started_at'},
                     {text:'Fecha de entrega',value:'ended_at'},
                 ];

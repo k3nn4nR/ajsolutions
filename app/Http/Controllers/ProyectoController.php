@@ -45,7 +45,12 @@ class ProyectoController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+        Proyecto::create([
+            'Descripción' => strtoupper($request->input('descripcion')),
+            'Estado' => strtoupper($request->input('estado')),
+            'started_at' => strtoupper($request->input('started_at')),
+            'ended_at' => strtoupper($request->input('ended_at')),
+        ]);
     }
 
     /**

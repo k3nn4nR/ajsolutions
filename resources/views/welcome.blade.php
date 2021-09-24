@@ -133,10 +133,6 @@
             @endif
 
             <div class="content">
-<<<<<<< HEAD
-                <div class="title m-b-md">
-                    A J SOLUTIONS PELUDITOS
-=======
                 <div>
                     <div class="title m-b-md">
                         AJ SOLUTIONS S.A.C
@@ -194,7 +190,6 @@
                 
                 <div class="footer">
                     <div class="col"></div>
->>>>>>> master
                 </div>
             </div>
         </div>
