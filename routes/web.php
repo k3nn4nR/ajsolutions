@@ -38,5 +38,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/permissions','SystemController@permissionIndex');
         Route::post('/permission','SystemController@permissionStore');
     });
+
+    Route::name('proyecto.')->group(function () {
+        Route::get('/proyecto','ProyectoController@mainView')->name('view');
+        Route::get('/proyectos','ProyectoController@index')->name('index');
+        Route::post('/proyecto','ProyectoController@store')->name('index');
+    });
     
 });
