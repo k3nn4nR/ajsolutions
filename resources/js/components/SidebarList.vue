@@ -19,8 +19,13 @@
             links: [
                 ['fas fa-home', 'Inicio','/home'],
                 ['fas fa-hard-hat', 'Trabajadores','/trabajador'],
+<<<<<<< HEAD
                 ['fas fa-project-diagram', 'Proyectos',''],
+                ['fas fa-puzzle-piece', 'Evaluaciones','/evaluacion'],
+=======
+                ['fas fa-project-diagram', 'Proyectos','/proyecto'],
                 ['fas fa-puzzle-piece', 'Evaluaciones',''],
+>>>>>>> master
                 ['fas fa-chart-bar', 'Reportes',''],
                 ['fas fa-cog', 'Configuracion','/sistema'],
                 ['fas fa-power-off', 'Cerrar Sesion',''],

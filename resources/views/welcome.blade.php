@@ -13,9 +13,9 @@
         <style>
             html, body {
                 background-color: #fff;
-                color: #636b6f;
+                color: #fff;
                 font-family: 'Nunito', sans-serif;
-                font-weight: 200;
+                font-weight: 300;
                 height: 100vh;
                 margin: 0;
             }
@@ -39,20 +39,24 @@
                 right: 10px;
                 top: 18px;
             }
-
+            .top-left {
+                position: absolute;
+                left: 10px;
+                top: 18px;
+            }
             .content {
                 text-align: center;
             }
 
             .title {
-                font-size: 84px;
+                font-size: 100px;
             }
 
             .links > a {
-                color: #636b6f;
+                color: #fff;
                 padding: 0 25px;
                 font-size: 13px;
-                font-weight: 600;
+                font-weight: 800;
                 letter-spacing: .1rem;
                 text-decoration: none;
                 text-transform: uppercase;
@@ -61,10 +65,59 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            .fondo {
+                background-color: #fff;
+                color: black;
+            }
+
+            
+
+            .fondo .links> a {
+                color: black;
+                padding: 0 25px;
+                font-size: 13px;
+                font-weight: 800;
+                letter-spacing: .1rem;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+
+            .fondo .text{
+                font-size: 13px;
+                padding: 20px;
+                position: absolute;
+                left: 50px;
+                top: 20px;
+                margin-right: 400px;
+            }
+
+            .img{
+               background-image: url('');
+            }
+
+            .about{
+                min-height: 400px;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .about_picture{
+                max-width: 20%;
+            }
+            .about_img{
+                text-align: center;
+            }
+            .about_img--left{
+                text-align: left;
+            }
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="flex-center position-ref full-height" style="background-image: url('img/2.jpg');
+        background-size:cover;
+        height:850px;">
+            
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -80,19 +133,68 @@
             @endif
 
             <div class="content">
+<<<<<<< HEAD
                 <div class="title m-b-md">
-                    Laravel
+                    A J SOLUTIONS PELUDITOS
+=======
+                <div>
+                    <div class="title m-b-md">
+                        AJ SOLUTIONS S.A.C
+                    </div>
+
+                    <div class="links">
+                        <a href="">Nosotros</a>
+                        <a href="">Servicios</a>
+                        <a href="">Clientes</a>
+                        <a href="">Contacto</a>
+                        <a href="">Redes Sociales</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="flex-center position-ref full-height fondo">
+            <div class="content">
+            <div class="title m-b-md text">
+                <div class="row">
+                    <div class="col">
+                    <p class="about_paragraph">Brindamos servicios de desarrollo e implementación de soluciones de TI, a empresas del sector privado haciendo énfasis en el desarrollo de software a medida.</p>
+                    </div>
+                    <div class="col">
+                    <figure class="about_img">
+                            <img src="img/1.jpg" class="about_picture" alt="">
+                        </figure>
+                    </div>
                 </div>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                <div class="row">
+                    <div class="col">
+                    <p class="about_paragraph">Hacemos uso de productos de los principales fabricantes de software mundial, valiéndose para ello de las metodologías actuales y de las mejores prácticas.</p>
+                    </div>
+                    <div class="col">
+                    <figure class="about_img about_imc--left">
+                            <img src="img/fondo.jpg" class="about_picture" alt="">
+                        </figure>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                    <p class="about_paragraph">Todo esto nos permite brindar a nuestros clientes soluciones altamente escalables, orientadas al servicio, seguras y de alta disponibilidad. Lo cual no sería posible sin el staff de profesionales que la conforman.</p>
+                    </div>
+                    <div class="col">
+                    <figure class="about_img">
+                            <img src="img/fondo.jpg" class="about_picture" alt="">
+                        </figure>    
+                    </div>
+                </div>
+                    
+                        
+                
+                <div class="footer">
+                    <div class="col"></div>
+>>>>>>> master
                 </div>
             </div>
         </div>

@@ -29,6 +29,12 @@ Vue.component('sidebar-list', require('./components/SidebarList.vue').default);
 Vue.component('trabajadores-list', require('./components/Trabajadores/Listado.vue').default);
 Vue.component('trabajador-create', require('./components/Trabajadores/Crear.vue').default);
 
+
+//proyecto
+Vue.component('proyectos-list', require('./components/Proyectos/Listado.vue').default);
+Vue.component('proyectos-create', require('./components/Proyectos/Crear.vue').default);
+
+
 //roles
 Vue.component('role-list', require('./components/Roles/Listado.vue').default);
 Vue.component('role-create', require('./components/Roles/Crear.vue').default);
@@ -38,6 +44,15 @@ Vue.component('permiso-asign', require('./components/Roles/AisgnarPermisos.vue')
 Vue.component('permiso-list', require('./components/Permisos/Listado.vue').default);
 Vue.component('permiso-create', require('./components/Permisos/Crear.vue').default);
 Vue.component('role-asign', require('./components/Permisos/AsignarRoles.vue').default);
+
+//evaluaciones
+Vue.component('evaluacion-list', require('./components/Evaluaciones/Listado.vue').default);
+Vue.component('evaluacion-create', require('./components/Evaluaciones/Crear.vue').default);
+Vue.component('factor-list', require('./components/Evaluaciones/Factores/Listado.vue').default);
+Vue.component('factor-create', require('./components/Evaluaciones/Factores/Crear.vue').default);
+Vue.component('pregunta-list', require('./components/Evaluaciones/Preguntas/Listado.vue').default);
+Vue.component('pregunta-create', require('./components/Evaluaciones/Preguntas/Crear.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
