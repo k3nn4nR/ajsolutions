@@ -29,11 +29,13 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/sistema', 'SystemController@mainView');
 
+    //falta agregar la ruta para asigar permisos
     Route::name('role.')->group(function () {
         Route::get('/roles','SystemController@roleIndex');
         Route::post('/role','SystemController@roleStore');
     });
 
+    //falta agregar la ruta para asigar roles
     Route::name('permission.')->group(function () {
         Route::get('/permissions','SystemController@permissionIndex');
         Route::post('/permission','SystemController@permissionStore');
