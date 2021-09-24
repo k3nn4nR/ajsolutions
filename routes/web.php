@@ -61,7 +61,6 @@ Route::middleware('auth')->group(function () {
         Route::delete('pregunta/{pregunta}','EvaluacionController@preguntaDestroy');
     });
 
-});
     Route::name('proyecto.')->group(function () {
         Route::get('/proyecto','ProyectoController@mainView')->name('view');
         Route::get('/proyectos','ProyectoController@index')->name('index');
