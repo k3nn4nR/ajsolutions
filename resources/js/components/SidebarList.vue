@@ -21,6 +21,7 @@
                 ['fas fa-hard-hat', 'Trabajadores','/trabajador'],
                 ['fas fa-puzzle-piece', 'Evaluaciones','/evaluacion'],
                 ['fas fa-project-diagram', 'Proyectos','/proyecto'],
+                ['far fa-object-group', 'Grupos','/grupostrabajo'],
                 ['fas fa-chart-bar', 'Reportes',''],
                 ['fas fa-cog', 'Configuracion','/sistema'],
                 ['fas fa-power-off', 'Cerrar Sesion',''],

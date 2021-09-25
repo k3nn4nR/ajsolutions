@@ -29,9 +29,6 @@
                     <v-col>
                         <v-text-field v-model="celular" label="Celular" dense/>
                     </v-col>
-                    <v-col>
-                        <v-text-field v-model="estado" label="Estado" dense/>
-                    </v-col>
                 </v-row>
             </v-card-text>
             <v-card-actions>
@@ -52,7 +49,6 @@
                 name:'',
                 direccion:'',
                 celular:'',
-                estado:'',
             };
         },
         watch:{
@@ -80,7 +76,6 @@
                 formData.append('name',this.name)
                 formData.append('direccion',this.direccion)
                 formData.append('celular',this.celular)
-                formData.append('estado',this.estado)
                 axios.post('/trabajador',formData).then(response=>{
                     this.dialog=false
                     swal("Correcto!", "Trabajador registrado exitosamente", "success");

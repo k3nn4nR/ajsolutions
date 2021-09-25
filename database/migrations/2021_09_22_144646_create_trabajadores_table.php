@@ -21,7 +21,7 @@ class CreateTrabajadoresTable extends Migration
             $table->string('nombres');
             $table->string('direccion');
             $table->string('celular');
-            $table->string('estado');
+            $table->string('estado')->default('DISPONIBLE');
             $table->timestamps();
             $table->softdeletes();
             $table->primary('dni');

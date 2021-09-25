@@ -22,7 +22,7 @@
                         //     }
                         // ],
                         title: {
-                            text: "Ingresos",
+                            text: "Ingresos Por Año",
                             align: 'left',
                             margin: 10,
                             offsetX: 0,

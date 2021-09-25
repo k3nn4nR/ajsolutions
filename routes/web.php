@@ -20,12 +20,17 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::middleware('auth')->group(function () {
+
+    Route::get('/grupostrabajo', function () {
+        return view('grupostrabajo');
+    });
+
     Route::get('/home', 'HomeController@index')->name('home');
 
     Route::name('trabajador.')->group(function () {
         Route::get('/trabajador','TrabajadorController@mainView')->name('view');
         Route::get('/trabajadores','TrabajadorController@index')->name('index');
-        Route::post('/trabajador','TrabajadorController@store')->name('index');
+        Route::post('/trabajador','TrabajadorController@store');
         Route::delete('/trabajador/{trabajador}','TrabajadorController@destroy');
     });
 
@@ -65,7 +70,8 @@ Route::middleware('auth')->group(function () {
     Route::name('proyecto.')->group(function () {
         Route::get('/proyecto','ProyectoController@mainView')->name('view');
         Route::get('/proyectos','ProyectoController@index')->name('index');
-        Route::post('/proyecto','ProyectoController@store')->name('index');
+        Route::post('/proyecto','ProyectoController@store');
+        Route::post('/proyecto-trabajadores','ProyectoController@storeGrupoTrabajo');
         Route::delete('/proyecto/{proyecto}','ProyectoController@destroy');
     });
     

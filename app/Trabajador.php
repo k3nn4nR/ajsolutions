@@ -13,5 +13,8 @@ class Trabajador extends Model
     protected $primaryKey = 'dni';
     protected $fillable = ['dni','user_id','ape_paterno','ape_materno','nombres','direccion','celular','estado'];
     
-    
+    public function proyectos()
+    {
+        return $this->belongsToMany('App\Proyecto')->withPivot('esttado', 'comentario','deleted_at');
+    }
 }

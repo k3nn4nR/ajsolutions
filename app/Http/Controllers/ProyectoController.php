@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Proyecto;
+use App\Trabajador;
 
 class ProyectoController extends Controller
 {
@@ -96,5 +97,14 @@ class ProyectoController extends Controller
     public function destroy($id)
     {
         Proyecto::find($id)->delete();
+    }
+
+    public function storeGrupoTrabajo(Request $request)
+    {
+        Proyecto::find($request->input('proyecto'))->trabajadores()->syncWithoutDetaching($request->input('trabajadores'));
+        foreach($request->input('trabajadores') as $trabajador)
+        {
+            Trabajador::find($trabajador)->update(['estado'=>'NO DISPONIBLE']);
+        }
     }
 }
