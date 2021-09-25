@@ -46,7 +46,6 @@
                                     </v-list-item>
                                 </v-list>
                             </v-menu>
-                            <v-spacer></v-spacer>
                         </v-toolbar>
                     </v-sheet>
                     <v-sheet height="600">
@@ -54,16 +53,16 @@
                         <v-menu v-model="selectedOpen" :close-on-content-click="false" :activator="selectedElement" offset-x >
                             <v-card color="grey lighten-4" min-width="350px" flat >
                                 <v-toolbar :color="selectedEvent.color" dark >
-                                    <v-toolbar-title v-html="selectedEvent.Descripción"></v-toolbar-title>
+                                    <v-toolbar-title v-html="selectedEvent.name"></v-toolbar-title>
                                     <v-spacer></v-spacer>
                                 </v-toolbar>
                                 <v-card-text>
                                     <v-row>
                                         <v-col>
-                                            <v-text-field  disabled v-model="selectedEvent.Descripción" label="Proyecto" />
+                                            <v-text-field disabled dense v-model="selectedEvent.empresa" label="Empresa" />
                                         </v-col>
                                         <v-col>
-                                            <v-text-field  disabled v-model="selectedEvent.Estado" label="Estado" />
+                                            <v-text-field disabled dense v-model="selectedEvent.estado" label="Estado" />
                                         </v-col>
                                     </v-row>
                                 </v-card-text>
@@ -85,7 +84,6 @@
         data: () => ({
             menu: false,
             dialog:false,
-            seguimientos:[],
             focus: '',
             type: 'month',
             typeToLabel: {
@@ -106,9 +104,9 @@
             this.getData()
         },
         watch:{
-            seguimientos( val ){
-                if(val > 0){
-                    this.updateRange()
+            selectedOpen( val ){
+                if(!val){
+                    this.selectedEvent = {}
                 }
             },            
         },
@@ -149,13 +147,14 @@
             getData(){
                 axios.get('/proyectos').then(response=>{
                     const events = []
-                    response.data.forEach(seguimiento => {
+                    response.data.forEach(proyecto => {
                         events.push({
-                            name: seguimiento.Descripción,
-                            start: seguimiento.started_at,
-                            end: seguimiento.ended_at,
+                            name: proyecto.Descripción,
+                            start: proyecto.started_at,
+                            end: proyecto.ended_at,
                             color: 'green',
-                            details: seguimiento.Estado,
+                            empresa: proyecto.Empresa,
+                            estado: proyecto.Estado,
                         })
                     });
                     this.events = events

@@ -47,7 +47,7 @@ class ProyectoController extends Controller
     {
         Proyecto::create([
             'Descripción' => strtoupper($request->input('descripcion')),
-            'Estado' => strtoupper($request->input('estado')),
+            'Empresa' => strtoupper($request->input('empresa')),
             'started_at' => strtoupper($request->input('started_at')),
             'ended_at' => strtoupper($request->input('ended_at')),
         ]);

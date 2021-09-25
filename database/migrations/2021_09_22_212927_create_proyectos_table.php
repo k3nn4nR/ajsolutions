@@ -16,7 +16,8 @@ class CreateFactoresTable extends Migration
         Schema::create('proyectos', function (Blueprint $table) {
             $table->id();
             $table->string('Descripción');
-            $table->string('Estado');
+            $table->string('Empresa');
+            $table->string('Estado')->default('POR APROBAR');
             $table->date('started_at');
             $table->date('ended_at');
             $table->timestamps();

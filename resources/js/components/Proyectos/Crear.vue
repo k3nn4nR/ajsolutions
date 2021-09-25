@@ -13,7 +13,7 @@
                         <v-text-field v-model="descripcion" label="Nombre" dense/>
                     </v-col>
                     <v-col>
-                        <v-text-field v-model="estado" label="Empresa" dense/>
+                        <v-text-field v-model="empresa" label="Empresa" dense/>
                     </v-col>
                 </v-row>
                 <v-row>
@@ -52,7 +52,7 @@
                 fecha_entrega_ref:false,
                 dialog:false,
                 descripcion:'',
-                estado:'',
+                empresa:'',
                 started_at:'',
                 ended_at:'',
             };
@@ -72,7 +72,7 @@
             store(){
                 let formData = new FormData
                 formData.append('descripcion',this.descripcion)
-                formData.append('estado',this.estado)
+                formData.append('empresa',this.empresa)
                 formData.append('started_at',this.started_at)
                 formData.append('ended_at',this.ended_at)
                 axios.post('/proyecto',formData).then(response=>{

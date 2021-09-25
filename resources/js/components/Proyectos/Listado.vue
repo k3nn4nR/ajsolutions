@@ -25,7 +25,8 @@
             headers(){
                 return [
                     {text:'Nombre',value:'Descripción'},
-                    {text:'Empresa',value:'Estado'},
+                    {text:'Empresa',value:'Empresa'},
+                    {text:'Estado',value:'Estado'},
                     {text:'Fecha de inicio',value:'started_at'},
                     {text:'Fecha de entrega',value:'ended_at'},
                     {text:'',value:'acciones'},
