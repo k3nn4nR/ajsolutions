@@ -29,6 +29,9 @@
                     <v-col>
                         <v-text-field v-model="celular" label="Celular" dense/>
                     </v-col>
+                    <v-col>
+                        <v-file-input dense small label="Foto" show-size truncate-length="15" small-chips v-model="photo"/>
+                    </v-col>
                 </v-row>
             </v-card-text>
             <v-card-actions>
@@ -49,6 +52,7 @@
                 name:'',
                 direccion:'',
                 celular:'',
+                photo:[],
             };
         },
         watch:{
@@ -63,7 +67,7 @@
                     this.direccion=''
                     this.celular=''
                     this.estado=''
-                    
+                    this.photo = []   
                 }
             },
         },
@@ -76,6 +80,7 @@
                 formData.append('name',this.name)
                 formData.append('direccion',this.direccion)
                 formData.append('celular',this.celular)
+                formData.append('photo',this.photo)
                 axios.post('/trabajador',formData).then(response=>{
                     this.dialog=false
                     swal("Correcto!", "Trabajador registrado exitosamente", "success");

@@ -11,7 +11,7 @@ class Trabajador extends Model
     protected $table = "trabajadores";
     protected $keyType  = 'string';
     protected $primaryKey = 'dni';
-    protected $fillable = ['dni','user_id','ape_paterno','ape_materno','nombres','direccion','celular','estado'];
+    protected $fillable = ['dni','user_id','ape_paterno','ape_materno','nombres','photo','direccion','celular','estado'];
     
     public function proyectos()
     {

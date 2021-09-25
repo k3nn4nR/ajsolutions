@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 use App\Trabajador;
 
 class TrabajadorController extends Controller
@@ -45,14 +46,23 @@ class TrabajadorController extends Controller
      */
     public function store(Request $request)
     {
-        Trabajador::create([
-            "dni" => strtoupper($request->input('dni')),
-            "ape_paterno" => strtoupper($request->input('ape_paterno')),
-            "ape_materno" => strtoupper($request->input('ape_materno')),
-            "nombres" => strtoupper($request->input('name')),
-            "direccion" => strtoupper($request->input('direccion')),
-            "celular" => strtoupper($request->input('celular')),
-        ]);
+        $trabajador = new Trabajador;
+        $trabajador->dni = strtoupper($request->input('dni'));
+        $trabajador->ape_paterno = strtoupper($request->input('ape_paterno'));
+        $trabajador->ape_materno = strtoupper($request->input('ape_materno'));
+        $trabajador->nombres = strtoupper($request->input('name'));
+        $trabajador->direccion = strtoupper($request->input('direccion'));
+        $trabajador->celular = strtoupper($request->input('celular'));
+        if (!$request->file('photo'))
+        {
+            $trabajador->photo = 'no_image.jpg';
+        }else{
+            $extension = $request->file('photo')->getClientOriginalExtension();
+            $filename = $trabajador->dni . '.' . $extension;
+            Image::make($request->file('photo'))->resize(200, 300)->save(storage_path('/app/public/images/trabajadores/'.$filename));
+            $trabajador->photo = $filename;
+        }
+        $trabajador->save();
     }
 
     /**

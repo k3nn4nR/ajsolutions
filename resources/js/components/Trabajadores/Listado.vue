@@ -9,6 +9,9 @@
                 <trabajador-create v-on:getData="getData()"/>
             </v-toolbar>
         </template>
+        <template v-slot:item.photo="{ item }">
+            <v-img :src="getPhoto(item.photo)" max-height="150" max-width="250" ></v-img>
+        </template>
         <template v-slot:item.acciones="{ item }">
             <v-btn small class="error" @click="destroy(item)"><v-icon small>{{ "fas fa-trash" }}</v-icon></v-btn>
         </template>
@@ -25,6 +28,7 @@
         computed:{
             headers(){
                 return [
+                    {text:'',value:'photo'},
                     {text:'DNI',value:'dni'},
                     {text:'Apellido Paterno',value:'ape_paterno'},
                     {text:'Apellido Materno',value:'ape_materno'},
@@ -78,6 +82,9 @@
                         })
                     })
                 })
+            },
+            getPhoto(foto){
+               return "storage/images/trabajadores/"+foto
             },
         },
     }
