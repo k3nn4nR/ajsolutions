@@ -72,6 +72,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/proyectos','ProyectoController@index')->name('index');
         Route::post('/proyecto','ProyectoController@store');
         Route::post('/proyecto-trabajadores','ProyectoController@storeGrupoTrabajo');
+        Route::get('/proyecto-trabajadores','ProyectoController@getGrupoTrabajo');
         Route::delete('/proyecto/{proyecto}','ProyectoController@destroy');
     });
     

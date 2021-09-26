@@ -107,4 +107,9 @@ class ProyectoController extends Controller
             Trabajador::find($trabajador)->update(['estado'=>'NO DISPONIBLE']);
         }
     }
+
+    public function getGrupoTrabajo()
+    {
+        return Proyecto::with('trabajadores')->get();
+    }
 }

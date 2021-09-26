@@ -12,6 +12,6 @@ class Proyecto extends Model
 
     public function trabajadores()
     {
-        return $this->belongsToMany('App\Trabajador')->withPivot('esttado', 'comentario','deleted_at');
+        return $this->belongsToMany('App\Trabajador')->withPivot('estado', 'comentario','deleted_at');
     }
 }

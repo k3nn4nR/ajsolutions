@@ -59,7 +59,9 @@ Vue.component('pregunta-create', require('./components/Evaluaciones/Preguntas/Cr
 Vue.component('trabajadores-anuales', require('./components/Trabajadores/Graficas/IngresoPorAnio.vue').default);
 Vue.component('trabajadores-estados', require('./components/Trabajadores/Graficas/Estado.vue').default);
 
-Vue.component('grupos-trabajo-crear', require('./components/CrearGruposTrabajo.vue').default);
+//grupos de trabajo
+Vue.component('grupos-trabajo-crear', require('./components/GruposTrabajo/Crear.vue').default);
+Vue.component('grupos-trabajo-list', require('./components/GruposTrabajo/Listar.vue').default);
 /**
  * 
  * Next, we will create a fresh Vue application instance and attach it to

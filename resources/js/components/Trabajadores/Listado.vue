@@ -10,7 +10,7 @@
             </v-toolbar>
         </template>
         <template v-slot:item.photo="{ item }">
-            <v-img :src="getPhoto(item.photo)" max-height="150" max-width="250" ></v-img>
+            <v-img :src="getPhoto(item.photo)" max-height="50" max-width="70" ></v-img>
         </template>
         <template v-slot:item.acciones="{ item }">
             <v-btn small class="error" @click="destroy(item)"><v-icon small>{{ "fas fa-trash" }}</v-icon></v-btn>
