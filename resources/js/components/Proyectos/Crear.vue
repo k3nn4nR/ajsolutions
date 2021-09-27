@@ -62,7 +62,7 @@
                 if(!val)
                 {
                     this.descripcion=''
-                    this.estado=''
+                    this.empresa=''
                     this.started_at=''
                     this.ended_at=''
                 }

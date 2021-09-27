@@ -21,15 +21,33 @@
                 </v-row>
             </v-expansion-panel-header>
             <v-expansion-panel-content>
-                <v-data-table :items="proyecto.trabajadores" :headers="headers" dense>
-                    <template v-slot:item.acciones="{ item }">
-                        <v-btn class="warning"><v-icon></v-icon></v-btn>
-                        <v-btn class="error"><v-icon></v-icon></v-btn>
-                    </template>
-                    <template v-slot:item.photo="{ item }">
-                        <v-img :src="getPhoto(item.photo)" max-height="50" max-width="70"></v-img>
-                    </template>
-                </v-data-table>
+                <v-row>
+                    <v-col>
+                        <v-text-field v-model="proyecto.Empresa" label="Empresa" dense disabled/>
+                    </v-col>
+                    <v-col>
+                        <v-text-field v-model="proyecto.Estado" label="Estado" dense disabled/>
+                    </v-col>
+                </v-row>
+                <v-row>
+                    <v-col>
+                        <v-data-table :items="proyecto.trabajadores" :headers="headers" dense>
+                            <template v-slot:top>
+                                <v-toolbar flat>
+                                    <v-toolbar-title>Trabajadores</v-toolbar-title>
+                                </v-toolbar>
+                            </template>
+                            <template v-slot:item.acciones="{ item }">
+                                <proyectos-trabajador-eliminar :proyecto="proyecto.id" :trabajador="item.dni" />
+                                <proyectos-trabajador-reemplazar :proyecto="proyecto.id" :trabajador="item.dni" />
+                            </template>
+                            <template v-slot:item.photo="{ item }">
+                                <v-img :src="getPhoto(item.photo)" max-height="50" max-width="70"></v-img>
+                            </template>
+                        </v-data-table>
+                    </v-col>
+                </v-row>
+
             </v-expansion-panel-content>
         </v-expansion-panel>
     </v-expansion-panels>
@@ -49,7 +67,7 @@
                     {text:'Nombres',value:'nombres'},
                     {text:'',value:'acciones'},
                 ]
-            }  
+            }
         },
         mounted(){
             this.getData()
@@ -61,6 +79,6 @@
             getPhoto(foto){
                return "storage/images/trabajadores/"+foto
             },
-        } 
+        }
     }
 </script>

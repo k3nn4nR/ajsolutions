@@ -35,7 +35,8 @@ Vue.component('trabajador-create', require('./components/Trabajadores/Crear.vue'
 //proyecto
 Vue.component('proyectos-list', require('./components/Proyectos/Listado.vue').default);
 Vue.component('proyectos-create', require('./components/Proyectos/Crear.vue').default);
-
+Vue.component('proyectos-trabajador-eliminar', require('./components/GruposTrabajo/EliminarTrabajador.vue').default);
+Vue.component('proyectos-trabajador-reemplazar', require('./components/GruposTrabajo/ReemplazarTrabajador.vue').default);
 
 //roles
 Vue.component('role-list', require('./components/Roles/Listado.vue').default);

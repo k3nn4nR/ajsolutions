@@ -152,7 +152,7 @@
                             name: proyecto.Descripción,
                             start: proyecto.started_at,
                             end: proyecto.ended_at,
-                            color: 'green',
+                            color: this.colors[this.rnd(0, this.colors.length - 1)],
                             empresa: proyecto.Empresa,
                             estado: proyecto.Estado,
                         })
