@@ -25,6 +25,10 @@ Route::middleware('auth')->group(function () {
         return view('grupostrabajo');
     });
 
+    Route::get('/reportes', function () {
+        return view('reportes');
+    });
+
     Route::get('/home', 'HomeController@index')->name('home');
 
     Route::name('trabajador.')->group(function () {
@@ -70,10 +74,14 @@ Route::middleware('auth')->group(function () {
     Route::name('proyecto.')->group(function () {
         Route::get('/proyecto','ProyectoController@mainView')->name('view');
         Route::get('/proyectos','ProyectoController@index')->name('index');
+        Route::get('/proyectos-all','ProyectoController@getAll');
         Route::post('/proyecto','ProyectoController@store');
         Route::post('/proyecto-trabajadores','ProyectoController@storeGrupoTrabajo');
         Route::get('/proyecto-trabajadores','ProyectoController@getGrupoTrabajo');
+        Route::post('/proyecto-trabajador-delete','ProyectoController@destroyTrabajador');
+        Route::post('/proyecto-trabajador-reemplazar','ProyectoController@reempalzarTrabajador');
+        Route::post('/proyecto-trabajador-agregar','ProyectoController@agregarTrabajador');
+        Route::post('/proyecto-finalizar','ProyectoController@finishProyecto');
         Route::delete('/proyecto/{proyecto}','ProyectoController@destroy');
     });
-    
 });

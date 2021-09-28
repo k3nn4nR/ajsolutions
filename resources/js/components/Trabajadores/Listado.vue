@@ -3,9 +3,9 @@
         <template v-slot:top>
             <v-toolbar flat>
                 <v-toolbar-title>Trabajadores</v-toolbar-title>
-                <v-spacer></v-spacer>
+                <v-divider class="mx-4" inset vertical ></v-divider>
                 <v-text-field v-model="search" label="Busqueda" dense />
-                <v-spacer></v-spacer>
+                <v-divider class="mx-4" inset vertical ></v-divider>
                 <trabajador-create v-on:getData="getData()"/>
             </v-toolbar>
         </template>

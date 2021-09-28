@@ -6,21 +6,6 @@
            data(){
                return {
                    trabajadores: {
-                        // responsive: [
-                        //     {
-                        //         breakpoint: 1000,
-                        //         options: {
-                        //             plotOptions: {
-                        //             bar: {
-                        //                 horizontal: false
-                        //             }
-                        //             },
-                        //             legend: {
-                        //                 position: "bottom"
-                        //             }
-                        //         }
-                        //     }
-                        // ],
                         title: {
                             text: "Ingresos Por Año",
                             align: 'left',
@@ -63,15 +48,20 @@
                         response.data.forEach(trabajador => {
                             if(cat.some(category => category === trabajador.created_at.split("T")[0]) === false){
                                 cat[index] = trabajador.created_at.split("T")[0]
-                                let count = 0
-                                response.data.forEach(item_verificar => {
-                                    if(item_verificar.created_at.split("T")[0] == cat[index])
-                                        count++
-                                });
-                                data[index] = count
-                                index++;
+                                index++
                             }
                         });
+                        cat.sort()
+                        index = 0
+                        cat.forEach(category => {
+                            let count = 0
+                            response.data.forEach(trabajador => {
+                                if(trabajador.created_at.split("T")[0] == category)
+                                    count++
+                            });
+                            data[index] = count
+                            index++;
+                        });                  
                         this.updateChart(cat,data)
                     })
                },

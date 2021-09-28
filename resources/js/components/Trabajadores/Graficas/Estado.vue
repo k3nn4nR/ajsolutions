@@ -6,21 +6,6 @@
            data(){
                return {
                    trabajadores: {
-                        // responsive: [
-                        //     {
-                        //         breakpoint: 1000,
-                        //         options: {
-                        //             plotOptions: {
-                        //             bar: {
-                        //                 horizontal: false
-                        //             }
-                        //             },
-                        //             legend: {
-                        //                 position: "bottom"
-                        //             }
-                        //         }
-                        //     }
-                        // ],
                         title: {
                             text: "Estados",
                             align: 'left',

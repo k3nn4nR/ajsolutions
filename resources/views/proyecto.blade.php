@@ -3,17 +3,24 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <template>
-            <v-card>
-                <v-card-text>
-                    <v-row>
-                        <v-col>
-                            <proyectos-list/>
-                        </v-col>
-                    </v-row>
-                </v-card-text>
-            </v-card>
-        <template>
+        <v-card>
+            <v-card-text>
+                <v-row>
+                    <v-col>
+                        <proyectos-estados/>
+                    </v-col>
+                </v-row>
+            </v-card-text>
+        </v-card>
+        <v-card>
+            <v-card-text>
+                <v-row>
+                    <v-col>
+                        <proyectos-list/>
+                    </v-col>
+                </v-row>
+            </v-card-text>
+        </v-card>
     </div>
 </div>
 @endsection

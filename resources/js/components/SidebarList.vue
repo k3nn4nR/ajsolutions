@@ -22,9 +22,9 @@
                 ['fas fa-puzzle-piece', 'Evaluaciones','/evaluacion'],
                 ['fas fa-project-diagram', 'Proyectos','/proyecto'],
                 ['far fa-object-group', 'Grupos','/grupostrabajo'],
-                ['fas fa-chart-bar', 'Reportes',''],
+                ['fas fa-chart-bar', 'Reportes','/reportes'],
                 ['fas fa-cog', 'Configuracion','/sistema'],
-                ['fas fa-power-off', 'Cerrar Sesion',''],
+                ['fas fa-power-off', 'Cerrar Sesion','/logout'],
             ],
         }),
         mounted(){
@@ -42,7 +42,7 @@
                                 ['fas fa-hard-hat', 'Trabajadores','/trabajador'],
                                 ['fas fa-project-diagram', 'Proyectos',''],
                                 ['fas fa-puzzle-piece', 'Evaluaciones',''],
-                                ['fas fa-chart-bar', 'Reportes',''],
+                                ['fas fa-chart-bar', 'Reportes','/reportes'],
                                 ['fas fa-users', 'Usuarios',''],
                                 ['fas fa-power-off', 'Cerrar Sesion',''],
                             )
@@ -51,7 +51,12 @@
                 }
             },
             page(url){
-                window.location.href = url;
+                if(url != "/logout")
+                {
+                    window.location.href = url;
+                }else{
+                    axios.post('/logout').then(response=>{ window.location.href = "/"})
+                }
             },
         }
     }

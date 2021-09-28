@@ -20,7 +20,7 @@ class TrabajadorController extends Controller
 
     /**
      * Display the Main View for Trabajador.
-     * 
+     *
      * @return View
      */
     public function mainView()
@@ -107,6 +107,7 @@ class TrabajadorController extends Controller
      */
     public function destroy($id)
     {
+        Trabajador::find($id)->update(['estado'=>"INACTIVO"]);
         Trabajador::find($id)->delete();
     }
 }

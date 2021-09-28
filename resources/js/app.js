@@ -35,6 +35,7 @@ Vue.component('trabajador-create', require('./components/Trabajadores/Crear.vue'
 //proyecto
 Vue.component('proyectos-list', require('./components/Proyectos/Listado.vue').default);
 Vue.component('proyectos-create', require('./components/Proyectos/Crear.vue').default);
+Vue.component('proyectos-trabajador-agregar', require('./components/GruposTrabajo/Agregar.vue').default);
 Vue.component('proyectos-trabajador-eliminar', require('./components/GruposTrabajo/EliminarTrabajador.vue').default);
 Vue.component('proyectos-trabajador-reemplazar', require('./components/GruposTrabajo/ReemplazarTrabajador.vue').default);
 
@@ -59,6 +60,8 @@ Vue.component('pregunta-create', require('./components/Evaluaciones/Preguntas/Cr
 //graficas
 Vue.component('trabajadores-anuales', require('./components/Trabajadores/Graficas/IngresoPorAnio.vue').default);
 Vue.component('trabajadores-estados', require('./components/Trabajadores/Graficas/Estado.vue').default);
+Vue.component('proyectos-estados', require('./components/Proyectos/Graficas/Estado.vue').default);
+
 
 //grupos de trabajo
 Vue.component('grupos-trabajo-crear', require('./components/GruposTrabajo/Crear.vue').default);

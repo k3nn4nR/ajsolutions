@@ -35,19 +35,28 @@
                             <template v-slot:top>
                                 <v-toolbar flat>
                                     <v-toolbar-title>Trabajadores</v-toolbar-title>
+                                    <v-divider class="mx-4" inset vertical ></v-divider>
+                                    <proyectos-trabajador-agregar v-on:getData="getData()" :proyecto="proyecto"/>
                                 </v-toolbar>
                             </template>
-                            <template v-slot:item.acciones="{ item }">
-                                <proyectos-trabajador-eliminar :proyecto="proyecto.id" :trabajador="item.dni" />
-                                <proyectos-trabajador-reemplazar :proyecto="proyecto.id" :trabajador="item.dni" />
-                            </template>
-                            <template v-slot:item.photo="{ item }">
-                                <v-img :src="getPhoto(item.photo)" max-height="50" max-width="70"></v-img>
+                            <template v-slot:body="{ items }">
+                                <tbody>
+                                    <tr v-for="item in items" :key="item.dni" >
+                                        <td v-if="item.pivot.deleted_at == null"><v-img :src="getPhoto(item.photo)" max-height="50" max-width="70"></v-img></td>
+                                        <td v-if="item.pivot.deleted_at == null">{{ item.dni }}</td>
+                                        <td v-if="item.pivot.deleted_at == null">{{ item.ape_paterno }}</td>
+                                        <td v-if="item.pivot.deleted_at == null">{{ item.ape_materno }}</td>
+                                        <td v-if="item.pivot.deleted_at == null">{{ item.nombres }}</td>
+                                        <td v-if="item.pivot.deleted_at == null">
+                                            <proyectos-trabajador-reemplazar v-on:getData="getData()" :proyecto="proyecto" :trabajador="item" />
+                                            <proyectos-trabajador-eliminar v-on:getData="getData()" :proyecto="proyecto" :trabajador="item" />
+                                        </td>
+                                    </tr>
+                                </tbody>
                             </template>
                         </v-data-table>
                     </v-col>
                 </v-row>
-
             </v-expansion-panel-content>
         </v-expansion-panel>
     </v-expansion-panels>
@@ -74,7 +83,9 @@
         },
         methods:{
             getData(){
-                axios.get('/proyecto-trabajadores').then(response=>{this.proyectos = response.data})
+                axios.get('/proyecto-trabajadores').then(response=>{
+                    this.proyectos = response.data
+                })
             },
             getPhoto(foto){
                return "storage/images/trabajadores/"+foto
