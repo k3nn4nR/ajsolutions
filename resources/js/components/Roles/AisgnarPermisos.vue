@@ -22,7 +22,7 @@
             </v-card-text>
             <v-card-actions>
                 <v-btn class="error" @click="dialog=false"><v-icon>{{ 'fas fa-ban' }}</v-icon></v-btn>
-                <v-btn class="success" @click="store"><v-icon>{{ 'far fa-save' }}</v-icon></v-btn>
+                <v-btn class="success" @click="asignar"><v-icon>{{ 'far fa-save' }}</v-icon></v-btn>
             </v-card-actions>
         </v-card>
     </v-dialog>

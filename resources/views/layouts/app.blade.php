@@ -27,7 +27,11 @@
                 <div>
                     <v-navigation-drawer app >
                         <v-sheet color="grey lighten-4" class="pa-4" >
-                            <v-avatar class="mb-4" color="grey darken-1" size="64" ></v-avatar>
+                            <v-avatar class="mb-4" color="grey darken-1" size="64" >
+                                @if(Auth::user()->trabajador)
+                                <img src="storage/images/trabajadores/{{ Auth::user()->trabajador->photo }}">
+                                @endif
+                            </v-avatar>
                             <div>{{ Auth::user()->email }}</div>
                         </v-sheet>
                         <v-divider></v-divider>

@@ -49,6 +49,10 @@ Vue.component('permiso-list', require('./components/Permisos/Listado.vue').defau
 Vue.component('permiso-create', require('./components/Permisos/Crear.vue').default);
 Vue.component('role-asign', require('./components/Permisos/AsignarRoles.vue').default);
 
+//usuarios
+Vue.component('usuario-list', require('./components/Usuarios/Listado.vue').default);
+Vue.component('usuario-create', require('./components/Usuarios/Crear.vue').default);
+
 //evaluaciones
 Vue.component('evaluacion-list', require('./components/Evaluaciones/Listado.vue').default);
 Vue.component('evaluacion-create', require('./components/Evaluaciones/Crear.vue').default);

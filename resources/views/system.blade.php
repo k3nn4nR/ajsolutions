@@ -8,6 +8,11 @@
                 <v-card-text>
                     <v-row>
                         <v-col>
+                            <usuario-list/>
+                        </v-col>
+                    </v-row>
+                    <v-row>
+                        <v-col>
                             <role-list/>
                         </v-col>
                         <v-col>

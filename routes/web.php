@@ -84,4 +84,11 @@ Route::middleware('auth')->group(function () {
         Route::post('/proyecto-finalizar','ProyectoController@finishProyecto');
         Route::delete('/proyecto/{proyecto}','ProyectoController@destroy');
     });
+
+    Route::name('usuario.')->group(function () {
+        Route::get('/usuario','UserController@index');
+        Route::post('/usuario','UserController@store');
+        Route::put('/usuario','UserController@update');
+        Route::delete('/usuario/{user}','UserController@destroy');
+    });
 });
