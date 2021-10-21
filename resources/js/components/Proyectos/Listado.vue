@@ -11,6 +11,7 @@
         </template>
         <template v-slot:item.acciones="{ item }">
             <v-btn small class="success" @click="finish(item)"><v-icon small>{{ "fas fa-check" }}</v-icon></v-btn>
+            <v-btn small class="yellow" @click="edit(item)"><v-icon small>{{ "fas fa-edit" }}</v-icon></v-btn>
             <v-btn small class="error" @click="destroy(item)"><v-icon small>{{ "fas fa-trash" }}</v-icon></v-btn>
         </template>
     </v-data-table>
@@ -115,6 +116,9 @@
                         })
                     })
                 })
+            },
+            edit(item){
+                window.location.href = '/proyecto/'+item.id+'/edit'
             },
         },
     }

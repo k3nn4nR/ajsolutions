@@ -29,6 +29,8 @@
                 return [
                     {text:'Id',value:'id'},
                     {text:'Pregunta',value:'descripcion'},
+                    {text:'Evaluacion',value:'evaluacion.evaluacion'},
+                    {text:'Factor',value:'factor.descripcion'},
                     {text:'Acciones',value:'acciones'},
                 ];
             }

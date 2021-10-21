@@ -38,6 +38,7 @@ Vue.component('proyectos-create', require('./components/Proyectos/Crear.vue').de
 Vue.component('proyectos-trabajador-agregar', require('./components/GruposTrabajo/Agregar.vue').default);
 Vue.component('proyectos-trabajador-eliminar', require('./components/GruposTrabajo/EliminarTrabajador.vue').default);
 Vue.component('proyectos-trabajador-reemplazar', require('./components/GruposTrabajo/ReemplazarTrabajador.vue').default);
+Vue.component('proyecto-edit', require('./components/Proyectos/Editar.vue').default);
 
 //roles
 Vue.component('role-list', require('./components/Roles/Listado.vue').default);

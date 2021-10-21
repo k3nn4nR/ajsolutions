@@ -34,7 +34,6 @@
                         </v-menu>
                     </v-col>
                 </v-row>
-                
             </v-card-text>
             <v-card-actions>
                 <v-btn class="error" @click="dialog=false"><v-icon>{{ 'fas fa-ban' }}</v-icon></v-btn>

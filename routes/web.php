@@ -83,6 +83,8 @@ Route::middleware('auth')->group(function () {
         Route::post('/proyecto-trabajador-agregar','ProyectoController@agregarTrabajador');
         Route::post('/proyecto-finalizar','ProyectoController@finishProyecto');
         Route::delete('/proyecto/{proyecto}','ProyectoController@destroy');
+        Route::get('/proyecto/{id}/edit','ProyectoController@edit');
+        Route::get('/proyecto/{id}/trabajadores','ProyectoController@getTrabajadores');
     });
 
     Route::name('usuario.')->group(function () {

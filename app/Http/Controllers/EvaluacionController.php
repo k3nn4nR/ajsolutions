@@ -50,7 +50,7 @@ class EvaluacionController extends Controller
 
     public function preguntaIndex()
     {
-        return Pregunta::all();
+        return Pregunta::with('evaluacion','factor')->get();
     }
 
     public function preguntaStore(Request $request)

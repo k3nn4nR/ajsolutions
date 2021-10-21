@@ -74,7 +74,8 @@ class ProyectoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $proyecto = Proyecto::find($id);
+        return view('proyecto.edit',compact('proyecto'));
     }
 
     /**
@@ -155,5 +156,10 @@ class ProyectoController extends Controller
             Proyecto::find($request->input('proyecto'))->trabajadores()->updateExistingPivot($trabajador['dni'],['deleted_at'=>Carbon::now()]);
         }
         Proyecto::find($request->input('proyecto'))->delete();
+    }
+
+    public function getTrabajadores($id)
+    {
+        return Proyecto::where('id',$id)->with('trabajadores')->first()->trabajadores;
     }
 }
