@@ -6,10 +6,17 @@
         <v-card>
             <v-card-text>
                 <v-row>
-                    <evaluacion-list/>
+                    <v-col>
+                        <evaluaciones-trabajadores-asignar/>
+                    </v-col>
                 </v-row>
                 <v-row>
-                    <factor-list/>
+                    <v-col>
+                        <evaluacion-list/>
+                    </v-col>
+                    <v-col>
+                        <factor-list/>
+                    </v-col>
                 </v-row>
                 <v-row>
                     <pregunta-list/>

@@ -15,4 +15,14 @@ class Evaluacion extends Model
     {
         return $this->hasMany('App\Pregunta');
     }
+
+    public function cabeceras()
+    {
+        return $this->hasMany('App\EvaluacionesCabecera','evaluacion_id');
+    }
+
+    public function trabajadores()
+    {
+        return $this->hasManyThrough('App\Trabajador', 'App\EvaluacionesCabecera','evaluacion_id','dni','id','trabajador_dni');
+    }
 }

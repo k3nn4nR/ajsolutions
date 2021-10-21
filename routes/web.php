@@ -57,6 +57,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/evaluacion','EvaluacionController@mainView');
         Route::post('/evaluacion','EvaluacionController@evaluacionStore');
         Route::delete('evaluacion/{evaluacion}','EvaluacionController@evaluacionDestroy');
+        Route::post('/evaluacion-trabajador','EvaluacionController@storEvaluacionTrabajador');
     });
 
     Route::name('factor.')->group(function () {

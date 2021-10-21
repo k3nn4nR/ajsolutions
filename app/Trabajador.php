@@ -22,4 +22,14 @@ class Trabajador extends Model
     {
         return $this->belongsTo('App\User');
     }
+
+    public function cabeceras()
+    {
+        return $this->hasMany('App\EvaluacionesCabecera','trabajador_dni');
+    }
+
+    public function evaluaciones()
+    {
+        return $this->hasManyThrough('App\Evaluacion', 'App\EvaluacionesCabecera','trabajador_dni','id','dni','evaluacion_id');
+    }
 }

@@ -48,10 +48,10 @@ class ProyectoController extends Controller
     public function store(Request $request)
     {
         Proyecto::create([
-            'Descripción' => strtoupper($request->input('descripcion')),
-            'Empresa' => strtoupper($request->input('empresa')),
-            'started_at' => strtoupper($request->input('started_at')),
-            'ended_at' => strtoupper($request->input('ended_at')),
+            'Descripción' => mb_strtoupper($request->input('descripcion')),
+            'Empresa' => mb_strtoupper($request->input('empresa')),
+            'started_at' => mb_strtoupper($request->input('started_at')),
+            'ended_at' => mb_strtoupper($request->input('ended_at')),
         ]);
     }
 
@@ -124,7 +124,7 @@ class ProyectoController extends Controller
 
     public function destroyTrabajador(Request $request)
     {
-        Proyecto::find($request->input('proyecto'))->trabajadores()->updateExistingPivot($request->input('trabajador'),['comentario'=>strtoupper($request->input('comentario')),'deleted_at'=>Carbon::now()]);
+        Proyecto::find($request->input('proyecto'))->trabajadores()->updateExistingPivot($request->input('trabajador'),['comentario'=>mb_strtoupper($request->input('comentario')),'deleted_at'=>Carbon::now()]);
         Trabajador::find($request->input('trabajador'))->update(['estado'=>"DISPONIBLE"]);
     }
 
@@ -135,7 +135,7 @@ class ProyectoController extends Controller
 
     public function reempalzarTrabajador(Request $request)
     {
-        Proyecto::find($request->input('proyecto'))->trabajadores()->updateExistingPivot($request->input('trabajador'),['estado'=>"ELIMINADO",'comentario'=>strtoupper($request->input('comentario')),'deleted_at'=>Carbon::now()]);
+        Proyecto::find($request->input('proyecto'))->trabajadores()->updateExistingPivot($request->input('trabajador'),['estado'=>"ELIMINADO",'comentario'=>mb_strtoupper($request->input('comentario')),'deleted_at'=>Carbon::now()]);
         Proyecto::find($request->input('proyecto'))->trabajadores()->syncWithoutDetaching($request->input('reemplazo'));
         Trabajador::find($request->input('trabajador'))->update(['estado'=>"DISPONIBLE"]);
         Trabajador::find($request->input('reemplazo'))->update(['estado'=>"NO DISPONIBLE"]);

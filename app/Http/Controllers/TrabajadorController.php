@@ -47,12 +47,12 @@ class TrabajadorController extends Controller
     public function store(Request $request)
     {
         $trabajador = new Trabajador;
-        $trabajador->dni = strtoupper($request->input('dni'));
-        $trabajador->ape_paterno = strtoupper($request->input('ape_paterno'));
-        $trabajador->ape_materno = strtoupper($request->input('ape_materno'));
-        $trabajador->nombres = strtoupper($request->input('name'));
-        $trabajador->direccion = strtoupper($request->input('direccion'));
-        $trabajador->celular = strtoupper($request->input('celular'));
+        $trabajador->dni = mb_strtoupper($request->input('dni'));
+        $trabajador->ape_paterno = mb_strtoupper($request->input('ape_paterno'));
+        $trabajador->ape_materno = mb_strtoupper($request->input('ape_materno'));
+        $trabajador->nombres = mb_strtoupper($request->input('name'));
+        $trabajador->direccion = mb_strtoupper($request->input('direccion'));
+        $trabajador->celular = mb_strtoupper($request->input('celular'));
         if (!$request->file('photo'))
         {
             $trabajador->photo = 'no_image.jpg';
@@ -109,5 +109,5 @@ class TrabajadorController extends Controller
     {
         Trabajador::find($id)->update(['estado'=>"INACTIVO"]);
         Trabajador::find($id)->delete();
-    }
+    }  
 }

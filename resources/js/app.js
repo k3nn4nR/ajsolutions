@@ -61,11 +61,12 @@ Vue.component('factor-list', require('./components/Evaluaciones/Factores/Listado
 Vue.component('factor-create', require('./components/Evaluaciones/Factores/Crear.vue').default);
 Vue.component('pregunta-list', require('./components/Evaluaciones/Preguntas/Listado.vue').default);
 Vue.component('pregunta-create', require('./components/Evaluaciones/Preguntas/Crear.vue').default);
+Vue.component('evaluaciones-asign', require('./components/Evaluaciones/Preguntas/Crear.vue').default);
 
 //graficas
 Vue.component('trabajadores-anuales', require('./components/Trabajadores/Graficas/IngresoPorAnio.vue').default);
 Vue.component('trabajadores-estados', require('./components/Trabajadores/Graficas/Estado.vue').default);
-Vue.component('proyectos-estados', require('./components/Proyectos/Graficas/Estado.vue').default);
+Vue.component('evaluaciones-trabajadores-asignar', require('./components/Evaluaciones/Trabajadores/Asignar.vue').default);
 
 
 //grupos de trabajo

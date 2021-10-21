@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Evaluacion;
 use App\Factor;
 use App\Pregunta;
+use App\EvaluacionesCabecera;
+use App\EvaluacionesDetalle;
 
 class EvaluacionController extends Controller
 {
@@ -22,7 +24,7 @@ class EvaluacionController extends Controller
     public function evaluacionStore(Request $request)
     {
         Evaluacion::create([
-            'evaluacion' => strtoupper($request->input('evaluacion'))
+            'evaluacion' => mb_strtoupper($request->input('evaluacion'))
         ]);
     }
 
@@ -39,7 +41,7 @@ class EvaluacionController extends Controller
     public function factorStore(Request $request)
     {
         Factor::create([
-            'descripcion' => strtoupper($request->input('descripcion'))
+            'descripcion' => mb_strtoupper($request->input('descripcion'))
         ]);
     }
 
@@ -56,7 +58,7 @@ class EvaluacionController extends Controller
     public function preguntaStore(Request $request)
     {
         Pregunta::create([
-            'descripcion' => strtoupper($request->input('descripcion')),
+            'descripcion' => mb_strtoupper($request->input('descripcion')),
             'evaluacion_id' => $request->input('evaluacion'),
             'factor_id' => $request->input('factor')
         ]);
@@ -65,5 +67,19 @@ class EvaluacionController extends Controller
     public function preguntaDestroy($id)
     {
         Pregunta::find($id)->delete();
+    }
+
+    public function storEvaluacionTrabajador(Request $request)
+    {
+        foreach($request->input('evaluaciones') as $evaluacion)
+        {
+            foreach($request->input('trabajadores') as $trabajador)
+            {
+                EvaluacionesCabecera::create([
+                    'evaluacion_id' => $evaluacion,
+                    'trabajador_dni'    => $trabajador,
+                ]);
+            }
+        }
     }
 }
