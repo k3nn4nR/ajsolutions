@@ -28,7 +28,7 @@
                         },
                         stroke:{
                             curve: "smooth",
-                        }
+                        },
                     },
                     trabajadoresSeries: [{
                         name: 'trabajadores',

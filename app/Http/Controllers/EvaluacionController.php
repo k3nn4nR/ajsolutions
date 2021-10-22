@@ -82,4 +82,16 @@ class EvaluacionController extends Controller
             }
         }
     }
+
+    public function getResult($id)
+    {
+        $cabecera = EvaluacionesCabecera::where('id',$id)->withTrashed()->with('detalles.pregunta.factor')->first();
+        $puntajes = collect([]);
+        foreach($cabecera->detalles->groupBy('pregunta.factor.id') as $detalles)
+        {
+            $puntajes->push($detalles->sum('puntaje'));
+        }
+        $labels = $cabecera->detalles->unique('pregunta.factor.descripcion')->pluck('pregunta.factor.descripcion');
+        return compact('puntajes','labels');
+    }
 }

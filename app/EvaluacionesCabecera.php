@@ -19,4 +19,9 @@ class EvaluacionesCabecera extends Model
     {
         return $this->belongsTo('App\Trabajador','trabajador_dni');
     }
+
+    public function evaluacion()
+    {
+        return $this->belongsTo('App\Evaluacion','evaluacion_id');
+    }
 }

@@ -19,7 +19,6 @@ class CreateEvaluacionesDetallesTable extends Migration
             $table->unsignedBigInteger('pregunta_id');
             $table->string('puntaje')->nullable();
             $table->timestamps();
-            $table->softdeletes();
             $table->foreign('pregunta_id')->references('id')->on('preguntas')->constrained()->constrained()->onUpdate('cascade')->constrained()->onDelete('cascade');
             $table->foreign('evaluaciones_cabeceras_id')->references('id')->on('evaluaciones_cabeceras')->constrained()->constrained()->onUpdate('cascade')->constrained()->onDelete('cascade');
         });

@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use App\Trabajador;
+use App\EvaluacionesCabecera;
+use App\EvaluacionesDetalle;
+use  App\Http\Requests\StoreEvaluacionCompletada;
+use Carbon\Carbon;
 
 class TrabajadorController extends Controller
 {
@@ -113,6 +117,34 @@ class TrabajadorController extends Controller
 
     public function getEvaluaciones($id)
     {
-        return Trabajador::find($id)->load('cabeceras')->cabeceras;
+        $cabeceras = Trabajador::find($id)->load('cabeceras.detalles')->cabeceras;
+        foreach($cabeceras as $cabecera)
+        {
+            if($cabecera->detalles->isEmpty())
+            {
+                $evaluacion = $cabecera->load('evaluacion.preguntas')->evaluacion;
+                foreach($evaluacion->preguntas as $pregunta)
+                {
+                    $cabecera->detalles()->create([
+                        'pregunta_id'   => $pregunta->id,
+                    ]);
+                }
+            }
+        }
+        return $cabeceras = Trabajador::find($id)->load('cabeceras.detalles.pregunta','cabeceras.evaluacion')->cabeceras;
+    }
+
+    public function getEvaluacionesHistorico($id)
+    {
+        return EvaluacionesCabecera::onlyTrashed()->with('evaluacion')->where('trabajador_dni',$id)->get();
+    }
+
+    public function storeEvaluacion(StoreEvaluacionCompletada $request)
+    {
+        foreach($request->input('detalles') as $detalle)
+        {
+            EvaluacionesDetalle::find($detalle['id'])->update(['puntaje'=>$detalle['puntaje']]);
+        }
+        EvaluacionesCabecera::find($request->input('id'))->delete();
     }
 }

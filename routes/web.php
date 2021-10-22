@@ -38,7 +38,9 @@ Route::middleware('auth')->group(function () {
     Route::name('trabajador.')->group(function () {
         Route::get('/trabajador','TrabajadorController@mainView')->name('view');
         Route::get('/trabajadores','TrabajadorController@index')->name('index');
-        Route::get('/trabajadores-evaluaciones/{trabajador}','TrabajadorController@getEvaluaciones')->name('index');
+        Route::get('/trabajadores-evaluaciones/{trabajador}','TrabajadorController@getEvaluaciones')->name('evaluaciones.index');
+        Route::put('/trabajador-evaluaciones','TrabajadorController@storeEvaluacion');
+        Route::get('/trabajadores-evaluaciones-historico/{trabajador}','TrabajadorController@getEvaluacionesHistorico')->name('evaluaciones.historico.index');
         Route::post('/trabajador','TrabajadorController@store');
         Route::delete('/trabajador/{trabajador}','TrabajadorController@destroy');
     });
@@ -63,6 +65,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/evaluacion','EvaluacionController@evaluacionStore');
         Route::delete('evaluacion/{evaluacion}','EvaluacionController@evaluacionDestroy');
         Route::post('/evaluacion-trabajador','EvaluacionController@storEvaluacionTrabajador');
+        Route::get('/evaluacion-trabajador/{id}','EvaluacionController@getResult');
     });
 
     Route::name('factor.')->group(function () {
