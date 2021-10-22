@@ -109,5 +109,10 @@ class TrabajadorController extends Controller
     {
         Trabajador::find($id)->update(['estado'=>"INACTIVO"]);
         Trabajador::find($id)->delete();
-    }  
+    }
+
+    public function getEvaluaciones($id)
+    {
+        return Trabajador::find($id)->load('cabeceras')->cabeceras;
+    }
 }

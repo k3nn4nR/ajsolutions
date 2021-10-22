@@ -29,11 +29,16 @@ Route::middleware('auth')->group(function () {
         return view('reportes');
     });
 
+    Route::get('/tests', function () {
+        return view('evaluaciones');
+    });
+
     Route::get('/home', 'HomeController@index')->name('home');
 
     Route::name('trabajador.')->group(function () {
         Route::get('/trabajador','TrabajadorController@mainView')->name('view');
         Route::get('/trabajadores','TrabajadorController@index')->name('index');
+        Route::get('/trabajadores-evaluaciones/{trabajador}','TrabajadorController@getEvaluaciones')->name('index');
         Route::post('/trabajador','TrabajadorController@store');
         Route::delete('/trabajador/{trabajador}','TrabajadorController@destroy');
     });

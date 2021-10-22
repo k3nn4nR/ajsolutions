@@ -20,6 +20,7 @@
                 ['fas fa-home', 'Inicio','/home'],
                 ['fas fa-hard-hat', 'Trabajadores','/trabajador'],
                 ['fas fa-puzzle-piece', 'Evaluaciones','/evaluacion'],
+                ['fas fa-clipboard-list', 'Tests','/tests'],
                 ['fas fa-project-diagram', 'Proyectos','/proyecto'],
                 ['far fa-object-group', 'Grupos','/grupostrabajo'],
                 ['fas fa-chart-bar', 'Reportes','/reportes'],
