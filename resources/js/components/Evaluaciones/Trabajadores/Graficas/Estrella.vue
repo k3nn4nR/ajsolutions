@@ -1,5 +1,16 @@
 <template>
-    <apexchart type="radar" :options="options" :series="series"/>
+    <v-card>
+        <v-card-text>
+            <v-row>
+                <v-col>
+                    <apexchart type="radar" :options="options" :series="series"/>
+                </v-col>
+                <v-col>
+                    <apexchart :options="optionsRB" :series="seriesRB"/>
+                </v-col>
+            </v-row>
+        </v-card-text>
+    </v-card>
 </template>
 <script>
     export default {
@@ -34,6 +45,47 @@
                     name: 'puntos',
                     data: []
                 }],
+                optionsRB:{
+                    chart: {
+                        height: 280,
+                        type: "radialBar",
+                    },
+                    colors: ['#F50002','#F5FF05'],
+                    plotOptions: {
+                        radialBar: {
+                            startAngle: -135,
+                            endAngle: 135,
+                            track: {
+                                background: '#333',
+                                startAngle: -135,
+                                endAngle: 135,
+                            },
+                            dataLabels: {
+                                name: {
+                                show: false,
+                                },
+                                value: {
+                                fontSize: "30px",
+                                show: true
+                                }
+                            }
+                        }
+                    },
+                    fill: {
+                        type: "gradient",
+                        gradient: {
+                            shade: "light",
+                            type: "horizontal",
+                            gradientToColors: ['#26FE01'],
+                            stops: [0, 100]
+                        }
+                    },
+                    stroke: {
+                        lineCap: "butt"
+                    },
+                    labels: ["Progress"]
+                },
+                seriesRB: [],
             }
         },
         watch:{
@@ -50,17 +102,22 @@
                             name: 'puntos',
                             data: response.data.puntajes
                         }]
+                        let total = response.data.puntajes.reduce(function(valorAnterior, valorActual){
+                            return valorAnterior + valorActual;
+                        })
+                        this.seriesRB = [(total*100/180).toFixed(2)]
                     })
                 }else{
+                    this.seriesRB = []
                     this.trabajadores = {
-                            xaxis: {
-                                categories: []
-                            }
+                        xaxis: {
+                            categories: []
                         }
-                        this.series = [{
-                            name: 'puntos',
-                            data: []
-                        }]
+                    }
+                    this.series = [{
+                        name: 'puntos',
+                        data: []
+                    }]
                 }
             }
         },

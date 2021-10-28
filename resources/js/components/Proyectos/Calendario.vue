@@ -76,11 +76,20 @@
                     </v-sheet>
                 </v-col>
             </v-row>
+            <v-row>
+                <v-col>
+                    <export-example/>
+                </v-col>
+            </v-row>
         </v-card-text>
-    </v-card>  
+    </v-card>
 </template>
 <script>
+    import ExportExample from './ExportExample.vue'
     export default {
+        components:{
+            ExportExample,
+        },
         data: () => ({
             menu: false,
             dialog:false,
@@ -108,7 +117,7 @@
                 if(!val){
                     this.selectedEvent = {}
                 }
-            },            
+            },
         },
         methods: {
             viewDay ({ date }) {

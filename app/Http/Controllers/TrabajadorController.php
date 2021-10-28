@@ -147,4 +147,15 @@ class TrabajadorController extends Controller
         }
         EvaluacionesCabecera::find($request->input('id'))->delete();
     }
+
+    public function getEvaluacion($dni,$id)
+    {
+        $cabeceras = EvaluacionesCabecera::where('trabajador_dni',$dni)->where('evaluacion_id',$id)->onlyTrashed()->with('detalles')->orderBy('deleted_at')->get();
+        $puntajes = collect([]);
+        foreach($cabeceras as $cabecera)
+        {
+            $puntajes->push([$cabecera->deleted_at->valueOf(),$cabecera->detalles->sum('puntaje')]);
+        }
+        return compact('puntajes');
+    }
 }

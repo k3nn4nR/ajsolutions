@@ -9,6 +9,7 @@ class Proyecto extends Model
 {
     use SoftDeletes;
     protected $fillable = ['Descripción','Estado','Empresa','started_at','ended_at'];
+    protected $guarded = ['id'];
 
     public function trabajadores()
     {

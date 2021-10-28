@@ -43,6 +43,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/trabajadores-evaluaciones-historico/{trabajador}','TrabajadorController@getEvaluacionesHistorico')->name('evaluaciones.historico.index');
         Route::post('/trabajador','TrabajadorController@store');
         Route::delete('/trabajador/{trabajador}','TrabajadorController@destroy');
+        Route::get('/trabajador/{dni}/evaluacion/{id}','TrabajadorController@getEvaluacion');
     });
 
     Route::get('/sistema', 'SystemController@mainView');

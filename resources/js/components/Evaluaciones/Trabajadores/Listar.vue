@@ -5,6 +5,18 @@
                 <v-card-text>
                     <v-row>
                         <v-col>
+                            <v-data-table v-model="historicoSelected" :items="evaluacionesHistorico" :headers="historicoHeaders" show-select dense  item-key="id" :single-select="true">
+                                <template v-slot:top>
+                                    <v-toolbar flat>
+                                        <v-toolbar-title>Evaluaciones Finalizadas</v-toolbar-title>
+                                    </v-toolbar>
+                                </template>
+                                <template v-slot:item.deleted_at="{ item }">
+                                    {{ item.deleted_at | fechaFormat}}
+                                </template>
+                            </v-data-table>
+                        </v-col>
+                        <v-col>
                              <v-data-table :items="evaluaciones" :headers="evaluacionesHeaders" dense>
                                 <template v-slot:top>
                                     <v-toolbar flat>
@@ -15,19 +27,7 @@
                                     {{ item.created_at | fechaFormat}}
                                 </template>
                                 <template v-slot:item.acciones="{ item }">
-                                    <v-btn small class="success" @click="resolver(item)"><v-icon small>{{ "fas fa-check" }}</v-icon></v-btn>
-                                </template>
-                            </v-data-table>
-                        </v-col>
-                        <v-col>
-                            <v-data-table v-model="historicoSelected" :items="evaluacionesHistorico" :headers="historicoHeaders" show-select dense  item-key="id" :single-select="true">
-                                <template v-slot:top>
-                                    <v-toolbar flat>
-                                        <v-toolbar-title>Evaluaciones Finalizadas</v-toolbar-title>
-                                    </v-toolbar>
-                                </template>
-                                <template v-slot:item.deleted_at="{ item }">
-                                    {{ item.deleted_at | fechaFormat}}
+                                    <v-btn small class="success" @click="resolver(item)"><v-icon small>{{ "fas fa-pen-alt" }}</v-icon></v-btn>
                                 </template>
                             </v-data-table>
                         </v-col>

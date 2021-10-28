@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class EvaluacionesDetalle extends Model
 {
     protected $fillable = ['evaluaciones_cabeceras_id','pregunta_id','puntaje'];
+    protected $guarded = ['id'];
 
     public function cabecera()
     {

@@ -9,6 +9,7 @@ class EvaluacionesCabecera extends Model
 {
     use softdeletes;
     protected $fillable = ['evaluacion_id','trabajador_dni'];
+    protected $guarded = ['id'];
 
     public function detalles()
     {

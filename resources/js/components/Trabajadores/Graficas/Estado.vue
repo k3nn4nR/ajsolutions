@@ -5,7 +5,7 @@
     export default {
            data(){
                return {
-                   trabajadores: {
+                    trabajadores: {
                         title: {
                             text: "Estados",
                             align: 'left',

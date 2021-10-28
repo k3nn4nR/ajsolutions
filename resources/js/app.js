@@ -69,6 +69,7 @@ Vue.component('evaluaciones-view', require('./components/Evaluaciones/Trabajador
 Vue.component('trabajadores-anuales', require('./components/Trabajadores/Graficas/IngresoPorAnio.vue').default);
 Vue.component('trabajadores-estados', require('./components/Trabajadores/Graficas/Estado.vue').default);
 Vue.component('evaluaciones-trabajadores-asignar', require('./components/Evaluaciones/Trabajadores/Asignar.vue').default);
+Vue.component('test-filters', require('./components/Evaluaciones/Trabajadores/Graficas/Filter.vue').default);
 
 
 //grupos de trabajo

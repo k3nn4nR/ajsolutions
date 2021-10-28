@@ -25,8 +25,8 @@
             @if(Auth::user())
             <template>
                 <div>
-                    <v-navigation-drawer app >
-                        <v-sheet color="grey lighten-4" class="pa-4" >
+                    <v-navigation-drawer app color="teal lighten-2"/>
+                        <v-sheet color="teal lighten-3" class="pa-4" >
                             <v-avatar class="mb-4" color="grey darken-1" size="64" >
                                 @if(Auth::user()->trabajador)
                                 <img src="storage/images/trabajadores/{{ Auth::user()->trabajador->photo }}">

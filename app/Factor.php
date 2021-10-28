@@ -10,6 +10,7 @@ class Factor extends Model
     use SoftDeletes;
     protected $table = "factores";
     protected $fillable = ['descripcion'];
+    protected $guarded = ['id'];
 
     public function preguntas()
     {

@@ -10,6 +10,7 @@ class Pregunta extends Model
     use SoftDeletes;
     protected $table = 'preguntas';
     protected $fillable = ['descripcion','evaluacion_id','factor_id'];
+    protected $guarded = ['id'];
 
     public function evaluacion()
     {

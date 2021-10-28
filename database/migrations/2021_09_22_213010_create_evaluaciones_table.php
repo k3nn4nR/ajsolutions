@@ -16,6 +16,10 @@ class CreateEvaluacionesTable extends Migration
         Schema::create('evaluaciones', function (Blueprint $table) {
             $table->id();
             $table->string('evaluacion');
+            $table->string('autor');
+            // puntaje maximo
+            // rango de puntajes
+            // 
             $table->timestamps();
             $table->softDeletes();
         });
