@@ -16,17 +16,7 @@
         props:['roles','permissions'],
         data: () => ({
             cards: ['Today', 'Yesterday'],
-            links: [
-                ['fas fa-home', 'Inicio','/home'],
-                ['fas fa-hard-hat', 'Trabajadores','/trabajador'],
-                ['fas fa-puzzle-piece', 'Evaluaciones','/evaluacion'],
-                ['fas fa-clipboard-list', 'Tests','/tests'],
-                ['fas fa-project-diagram', 'Proyectos','/proyecto'],
-                ['far fa-object-group', 'Grupos','/grupostrabajo'],
-                ['fas fa-chart-bar', 'Reportes','/reportes'],
-                ['fas fa-cog', 'Configuracion','/sistema'],
-                ['fas fa-power-off', 'Cerrar Sesion','/logout'],
-            ],
+            links: [],
         }),
         mounted(){
             this.getData()
@@ -35,8 +25,10 @@
             getData(){
                 if(this.roles)
                 {
+                    
                     this.roles.forEach(role => {
-                        if(role.name)
+                        
+                        if(role.name == "Administrador")
                         {
                             this.links.push(
                                 ['fas fa-home', 'Inicio','/home'],
