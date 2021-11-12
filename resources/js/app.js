@@ -64,6 +64,7 @@ Vue.component('pregunta-list', require('./components/Evaluaciones/Preguntas/List
 Vue.component('pregunta-create', require('./components/Evaluaciones/Preguntas/Crear.vue').default);
 Vue.component('evaluaciones-asign', require('./components/Evaluaciones/Preguntas/Crear.vue').default);
 Vue.component('evaluaciones-view', require('./components/Evaluaciones/Trabajadores/Listar.vue').default);
+Vue.component('resultado-list', require('./components/Evaluaciones/Resultados/Listado.vue').default);
 
 //graficas
 Vue.component('trabajadores-anuales', require('./components/Trabajadores/Graficas/IngresoPorAnio.vue').default);

@@ -25,25 +25,37 @@
             getData(){
                 if(this.roles)
                 {
-                    
-                    this.roles.forEach(role => {
-                        
-                        if(role.name == "Administrador")
-                        {
-                            this.links.push(
-                                ['fas fa-home', 'Inicio','/home'],
-                                ['fas fa-hard-hat', 'Trabajadores','/trabajador'],
-                                ['fas fa-puzzle-piece', 'Evaluaciones','/evaluacion'],
-                                ['fas fa-clipboard-list', 'Tests','/tests'],
-                                ['fas fa-project-diagram', 'Proyectos','/proyecto'],
-                                ['far fa-object-group', 'Grupos','/grupostrabajo'],
-                                ['fas fa-chart-bar', 'Reportes','/reportes'],
-                                ['fas fa-cog', 'Configuracion','/sistema'],
-                                ['fas fa-power-off', 'Cerrar Sesion','/logout'],
-                            )
-                        }
-                    });
+                    if(this.roles.some(role => role.name === "Administrador") === true){
+                        this.links.push(
+                            ['fas fa-home', 'Inicio','/home'],
+                            ['fas fa-hard-hat', 'Trabajadores','/trabajador'],
+                            ['fas fa-puzzle-piece', 'Evaluaciones','/evaluacion'],
+                            ['fas fa-clipboard-list', 'Tests','/tests'],
+                            ['fas fa-project-diagram', 'Proyectos','/proyecto'],
+                            ['far fa-object-group', 'Grupos','/grupostrabajo'],
+                            ['fas fa-chart-bar', 'Reportes','/reportes'],
+                            ['fas fa-cog', 'Configuracion','/sistema'],
+                        )
+                    }
+                    if(this.roles.some(role => role.name === "Supervisor") === true){
+                        this.links.push(
+                            ['fas fa-home', 'Inicio','/home'],
+                            ['fas fa-puzzle-piece', 'Evaluaciones','/evaluacion'],
+                            ['fas fa-clipboard-list', 'Tests','/tests'],
+                            ['fas fa-project-diagram', 'Proyectos','/proyecto'],
+                            ['far fa-object-group', 'Grupos','/grupostrabajo'],
+                            ['fas fa-chart-bar', 'Reportes','/reportes'],
+                        )
+                    }
+                    if(this.roles.some(role => role.name === "Trabajador") === true){
+                        this.links.push(
+                            ['fas fa-home', 'Inicio','/home'],
+                            ['fas fa-clipboard-list', 'Tests','/tests'],
+                            ['far fa-object-group', 'Grupos','/grupostrabajo'],
+                        )
+                    }
                 }
+                this.links.push(['fas fa-power-off', 'Cerrar Sesion','/logout'])
             },
             page(url){
                 if(url != "/logout")

@@ -21,6 +21,9 @@
                 <v-row>
                     <pregunta-list/>
                 </v-row>
+                <v-row>
+                    <resultado-list/>
+                </v-row>
             </v-card-text>
         </v-card>
     </div>

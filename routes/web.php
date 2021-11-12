@@ -103,4 +103,11 @@ Route::middleware('auth')->group(function () {
         Route::put('/usuario','UserController@update');
         Route::delete('/usuario/{user}','UserController@destroy');
     });
+
+    Route::name('resultado.')->group(function () {
+        Route::get('/resultados','ResultadoController@index');
+        Route::post('/resultado','ResultadoController@store');
+        Route::put('/resultado','ResultadoController@update');
+        Route::delete('/resultado/{user}','ResultadoController@destroy');
+    });
 });
