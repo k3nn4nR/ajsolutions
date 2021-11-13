@@ -1,11 +1,11 @@
 <template>
-    <v-data-table :items="evaluaciones" :headers="headers" dense :search="search">
+    <v-data-table :items="resultados" :headers="headers" dense :search="search">
         <template v-slot:top>
             <v-toolbar flat>
                 <v-toolbar-title>Resultados</v-toolbar-title>
                 <v-divider class="mx-4" inset vertical ></v-divider>
                 <v-spacer/>
-                <evaluacion-create v-on:getData="getData()"/>
+                <resultado-crear/>
             </v-toolbar>
         </template>
         <template v-slot:item.acciones="{ item }">
@@ -14,7 +14,11 @@
     </v-data-table>
 </template>
 <script>
+    import ResultadoCrear from '../Resultados/Crear.vue'
     export default {
+        components:{
+            ResultadoCrear
+        },
         data(){
             return {
                 search:'',
@@ -29,6 +33,8 @@
                 return [
                     {text:'Id',value:'id'},
                     {text:'Resultado',value:'resultado'},
+                    {text:'Valor Minimo',value:'valor_minimo'},
+                    {text:'Valor Maximo',value:'valor_maximo'},
                     {text:'Acciones',value:'acciones'},
                 ];
             }

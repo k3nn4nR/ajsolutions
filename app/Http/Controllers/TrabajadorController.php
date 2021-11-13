@@ -145,7 +145,7 @@ class TrabajadorController extends Controller
         {
             EvaluacionesDetalle::find($detalle['id'])->update(['puntaje'=>$detalle['puntaje']]);
         }
-        EvaluacionesCabecera::find($request->input('id'))->delete();
+        EvaluacionesCabecera::find($request->input('id'))->update(['estado'=>$detalle['FINALIZADO']])->delete();
     }
 
     public function getEvaluacion($dni,$id)

@@ -6,8 +6,11 @@ use Illuminate\Http\Request;
 use App\Evaluacion;
 use App\Factor;
 use App\Pregunta;
+use App\Resultado;
 use App\EvaluacionesCabecera;
 use App\EvaluacionesDetalle;
+use DB;
+use Carbon\Carbon;
 
 class EvaluacionController extends Controller
 {
@@ -15,7 +18,7 @@ class EvaluacionController extends Controller
     {
         return view('evaluacion');
     }
-    
+
     public function evaluacionIndex()
     {
         return Evaluacion::all();
@@ -78,20 +81,51 @@ class EvaluacionController extends Controller
                 EvaluacionesCabecera::create([
                     'evaluacion_id' => $evaluacion,
                     'trabajador_dni'    => $trabajador,
+                    'estado'    => 'PENDIENTE',
                 ]);
             }
         }
     }
 
+    public function resultadoIndex()
+    {
+        return Resultado::all();
+    }
+
+    public function resultadoStore(Request $request)
+    {
+        Resultado::create([
+            'resultado' => mb_strtoupper($request->input('resultado'))
+        ]);
+    }
+
+    public function resultadoDestroy($id)
+    {
+        Resultado::find($id)->delete();
+    }
+
     public function getResult($id)
     {
-        $cabecera = EvaluacionesCabecera::where('id',$id)->withTrashed()->with('detalles.pregunta.factor')->first();
+        $cabecera = EvaluacionesCabecera::where('id',$id)->withTrashed()->with('detalles.pregunta.factor','evaluacion.resultados')->first();
         $puntajes = collect([]);
         foreach($cabecera->detalles->groupBy('pregunta.factor.id') as $detalles)
         {
             $puntajes->push($detalles->sum('puntaje'));
         }
         $labels = $cabecera->detalles->unique('pregunta.factor.descripcion')->pluck('pregunta.factor.descripcion');
+
         return compact('puntajes','labels');
+    }
+
+    public function getNCE()
+    {
+        $cabeceras = EvaluacionesCabecera::withTrashed()->get();
+        foreach($cabeceras as $cabecera)
+        {
+            $cabecera->fecha = Carbon::parse($cabecera->created_at)->year."-".Carbon::parse($cabecera->created_at)->month;
+        }
+        dd($cabeceras->groupBy('fecha'));
+        //agrupacion por fecha, separar por estados
+        return (count($cabeceras->where('deleted_at','!=',null))/(count($cabeceras)))*100;
     }
 }

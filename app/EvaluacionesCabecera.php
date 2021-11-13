@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\softdeletes;
 class EvaluacionesCabecera extends Model
 {
     use softdeletes;
-    protected $fillable = ['evaluacion_id','trabajador_dni'];
+    protected $fillable = ['evaluacion_id','trabajador_dni','estado'];
     protected $guarded = ['id'];
 
     public function detalles()

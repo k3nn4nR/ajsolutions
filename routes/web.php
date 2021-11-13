@@ -67,6 +67,8 @@ Route::middleware('auth')->group(function () {
         Route::delete('evaluacion/{evaluacion}','EvaluacionController@evaluacionDestroy');
         Route::post('/evaluacion-trabajador','EvaluacionController@storEvaluacionTrabajador');
         Route::get('/evaluacion-trabajador/{id}','EvaluacionController@getResult');
+        Route::get('/getNCE','EvaluacionController@getNCE');
+        
     });
 
     Route::name('factor.')->group(function () {
@@ -105,9 +107,9 @@ Route::middleware('auth')->group(function () {
     });
 
     Route::name('resultado.')->group(function () {
-        Route::get('/resultados','ResultadoController@index');
-        Route::post('/resultado','ResultadoController@store');
+        Route::get('/resultados','EvaluacionController@resultadoIndex');
+        Route::post('/resultado','EvaluacionController@resultadoStore');
         Route::put('/resultado','ResultadoController@update');
-        Route::delete('/resultado/{user}','ResultadoController@destroy');
+        Route::delete('/resultado/{user}','EvaluacionController@resultadoDestroy');
     });
 });

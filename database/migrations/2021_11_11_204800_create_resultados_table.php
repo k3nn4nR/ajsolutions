@@ -17,6 +17,7 @@ class CreateResultadosTable extends Migration
             $table->id();
             $table->unsignedBigInteger('evaluacion_id');
             $table->unsignedBigInteger('factor_id');
+            $table->string('nivel');
             $table->string('resultado');
             $table->integer('valor_minimo')->dfault(0);
             $table->integer('valor_maximo')->dfault(0);

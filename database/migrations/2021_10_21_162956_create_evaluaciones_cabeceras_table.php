@@ -17,6 +17,7 @@ class CreateEvaluacionesCabecerasTable extends Migration
             $table->id();
             $table->unsignedBigInteger('evaluacion_id');
             $table->string('trabajador_dni');
+            $table->string('estado');
             $table->timestamps();
             $table->softdeletes();
             $table->foreign('evaluacion_id')->references('id')->on('evaluaciones')->constrained()->constrained()->onUpdate('cascade')->constrained()->onDelete('cascade');

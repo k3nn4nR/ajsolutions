@@ -48,6 +48,11 @@
                 </v-card>
             </v-col>
         </v-row>
+        <v-row>
+            <v-col>
+                <nce-report/>
+            </v-col>
+        </v-row>
     </div>
 </div>
 @endsection

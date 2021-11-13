@@ -26,4 +26,9 @@ class Evaluacion extends Model
     {
         return $this->hasManyThrough('App\Trabajador', 'App\EvaluacionesCabecera','evaluacion_id','dni','id','trabajador_dni');
     }
+
+    public function resultados()
+    {
+        return $this->hasMany('App\Resultado','evaluacion_id');
+    }
 }

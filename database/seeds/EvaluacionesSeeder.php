@@ -13,8 +13,5 @@ class EvaluacionesSeeder extends Seeder
     public function run()
     {
         Evaluacion::create(["id" => 1, "evaluacion" => "SATISFACCION LABORAL", "autor" => "SONIA PALMA"]);
-  
-
-
     }
 }
