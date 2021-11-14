@@ -85,7 +85,7 @@
                             evaluacionText = evaluacion.evaluacion
                         }
                     });
-                    this.options= {
+                    this.options = {
                         title: {
                             text: "",
                             align: 'left',

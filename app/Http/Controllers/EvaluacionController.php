@@ -119,13 +119,26 @@ class EvaluacionController extends Controller
 
     public function getNCE()
     {
-        $cabeceras = EvaluacionesCabecera::withTrashed()->get();
+        $cabeceras = EvaluacionesCabecera::withTrashed()->get()->sortBy('created_at');
         foreach($cabeceras as $cabecera)
         {
             $cabecera->fecha = Carbon::parse($cabecera->created_at)->year."-".Carbon::parse($cabecera->created_at)->month;
+            $cabecera->mes = Carbon::parse($cabecera->created_at)->locale('es')->monthName;
         }
-        dd($cabeceras->groupBy('fecha'));
-        //agrupacion por fecha, separar por estados
-        return (count($cabeceras->where('deleted_at','!=',null))/(count($cabeceras)))*100;
+        $meses = $cabeceras->pluck('fecha')->unique()->values();
+        $cabeceras = $cabeceras->groupBy('fecha');
+        $posicion = 0;
+        $datos = collect([]);
+        foreach($cabeceras as $cabecera)
+        {
+            $finalizados = 0;
+            if($cabecera->pluck('estado')->countBy()->has('FINALIZADO'))
+            {
+                $finalizados = $cabecera->pluck('estado')->countBy()['FINALIZADO'];
+            }
+            $datos->push(round($finalizados/$cabecera->count()*100,2));
+            $posicion++;
+        }
+        return compact('meses','datos');
     }
 }
