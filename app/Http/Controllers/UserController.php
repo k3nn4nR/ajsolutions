@@ -34,4 +34,10 @@ class UserController extends Controller
     {
         User::find($id)->delete();
     }
+
+    public function roleSync(Request $request)
+    {
+        $user = User::find($request->input('user'));
+        $user->roles()->sync($request->input('roles'));
+    }
 }

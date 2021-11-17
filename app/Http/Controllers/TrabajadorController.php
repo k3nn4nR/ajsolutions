@@ -145,7 +145,10 @@ class TrabajadorController extends Controller
         {
             EvaluacionesDetalle::find($detalle['id'])->update(['puntaje'=>$detalle['puntaje']]);
         }
-        EvaluacionesCabecera::find($request->input('id'))->update(['estado'=>$detalle['FINALIZADO']])->delete();
+        $cabecera = EvaluacionesCabecera::find(EvaluacionesDetalle::find($request->input('detalles')[0]['id'])->evaluaciones_cabeceras_id);
+        $cabecera->estado = 'FINALIZADO';
+        $cabecera->deleted_at = Carbon::now();
+        $cabecera->save();
     }
 
     public function getEvaluacion($dni,$id)

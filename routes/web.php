@@ -44,6 +44,7 @@ Route::middleware('auth')->group(function () {
         Route::post('/trabajador','TrabajadorController@store');
         Route::delete('/trabajador/{trabajador}','TrabajadorController@destroy');
         Route::get('/trabajador/{dni}/evaluacion/{id}','TrabajadorController@getEvaluacion');
+
     });
 
     Route::get('/sistema', 'SystemController@mainView');
@@ -103,6 +104,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/usuario','UserController@index');
         Route::post('/usuario','UserController@store');
         Route::put('/usuario','UserController@update');
+        Route::post('/usuario-role-sync','UserController@roleSync');
         Route::delete('/usuario/{user}','UserController@destroy');
     });
 

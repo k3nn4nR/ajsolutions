@@ -93,8 +93,11 @@
         },
         methods:{
             getData(){
-                axios.get('/trabajadores-evaluaciones/'+this.trabajador.dni).then(response=>{this.evaluaciones=response.data})
-                axios.get('/trabajadores-evaluaciones-historico/'+this.trabajador.dni).then(response=>{this.evaluacionesHistorico=response.data})
+                if(this.trabajador != null)
+                {
+                    axios.get('/trabajadores-evaluaciones/'+this.trabajador.dni).then(response=>{this.evaluaciones=response.data})
+                    axios.get('/trabajadores-evaluaciones-historico/'+this.trabajador.dni).then(response=>{this.evaluacionesHistorico=response.data})
+                }
             },
             resolver(item){
                 let objeto = {detalles:[]}

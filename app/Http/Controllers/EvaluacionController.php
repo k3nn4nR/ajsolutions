@@ -27,7 +27,8 @@ class EvaluacionController extends Controller
     public function evaluacionStore(Request $request)
     {
         Evaluacion::create([
-            'evaluacion' => mb_strtoupper($request->input('evaluacion'))
+            'evaluacion' => mb_strtoupper($request->input('evaluacion')),
+            'autor' => mb_strtoupper($request->input('autor')),
         ]);
     }
 
@@ -44,7 +45,7 @@ class EvaluacionController extends Controller
     public function factorStore(Request $request)
     {
         Factor::create([
-            'descripcion' => mb_strtoupper($request->input('descripcion'))
+            'descripcion' => mb_strtoupper($request->input('descripcion')),
         ]);
     }
 
@@ -74,14 +75,18 @@ class EvaluacionController extends Controller
 
     public function storEvaluacionTrabajador(Request $request)
     {
+        $date = Carbon::now();
         foreach($request->input('evaluaciones') as $evaluacion)
         {
             foreach($request->input('trabajadores') as $trabajador)
             {
+
                 EvaluacionesCabecera::create([
                     'evaluacion_id' => $evaluacion,
                     'trabajador_dni'    => $trabajador,
                     'estado'    => 'PENDIENTE',
+                    'fecha' => $date->toDateString(),
+                    'hora' => $date->toTimeString(),
                 ]);
             }
         }
@@ -119,15 +124,13 @@ class EvaluacionController extends Controller
 
     public function getNCE()
     {
-        $cabeceras = EvaluacionesCabecera::withTrashed()->get()->sortBy('created_at');
+        $cabeceras = EvaluacionesCabecera::withTrashed()->get()->sortBy('fecha');
         foreach($cabeceras as $cabecera)
         {
-            $cabecera->fecha = Carbon::parse($cabecera->created_at)->year."-".Carbon::parse($cabecera->created_at)->month;
-            $cabecera->mes = Carbon::parse($cabecera->created_at)->locale('es')->monthName;
+            $cabecera->mes = Carbon::parse($cabecera->fecha)->year."-".Carbon::parse($cabecera->fecha)->month;
         }
-        $meses = $cabeceras->pluck('fecha')->unique()->values();
-        $cabeceras = $cabeceras->groupBy('fecha');
-        $posicion = 0;
+        $meses = $cabeceras->pluck('mes')->unique()->values();
+        $cabeceras = $cabeceras->groupBy('mes');
         $datos = collect([]);
         foreach($cabeceras as $cabecera)
         {
@@ -137,7 +140,6 @@ class EvaluacionController extends Controller
                 $finalizados = $cabecera->pluck('estado')->countBy()['FINALIZADO'];
             }
             $datos->push(round($finalizados/$cabecera->count()*100,2));
-            $posicion++;
         }
         return compact('meses','datos');
     }

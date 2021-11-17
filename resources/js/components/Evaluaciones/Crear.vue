@@ -12,6 +12,9 @@
                     <v-col>
                         <v-text-field v-model="evaluacion" label="Evaluacion" dense/>
                     </v-col>
+                     <v-col>
+                        <v-text-field v-model="autor" label="Autor" dense/>
+                    </v-col>
                 </v-row>
             </v-card-text>
             <v-card-actions>
@@ -27,6 +30,7 @@
             return {
                 evaluacion:'',
                 dialog:false,
+                autor:'',
             };
         },
         watch:{
@@ -35,6 +39,7 @@
                 if(!val)
                 {
                     this.evaluacion = ''
+                    this.autor = ''
                 }
             }
         },
@@ -42,6 +47,7 @@
             store(){
                 let formData = new FormData
                 formData.append('evaluacion',this.evaluacion)
+                formData.append('autor',this.autor)
                 axios.post('/evaluacion',formData).then(response=>{
                     this.dialog=false
                     swal("Correcto!", "Evaluacion registrada exitosamente", "success");

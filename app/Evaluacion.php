@@ -9,7 +9,7 @@ class Evaluacion extends Model
 {
     use SoftDeletes;
     protected $table = "evaluaciones";
-    protected $fillable = ['evaluacion'];
+    protected $fillable = ['evaluacion','autor'];
     protected $guarded = ['id'];
 
     public function preguntas()

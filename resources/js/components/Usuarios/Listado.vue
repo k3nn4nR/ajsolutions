@@ -7,12 +7,18 @@
                 <v-text-field v-model="search" dense label="Buscar"/>
                 <v-divider class="mx-4" inset vertical ></v-divider>
                 <usuario-create v-on:getData="getData()"/>
+                <v-divider class="mx-4" inset vertical ></v-divider>
+                <roles-sync :users="usuarios"/>
             </v-toolbar>
         </template>
     </v-data-table>
 </template>
 <script>
+    import RolesSync from '../Usuarios/Roles/Asignar.vue'
     export default {
+        components:{
+            RolesSync,
+        },
         data(){
             return {
                 search:'',

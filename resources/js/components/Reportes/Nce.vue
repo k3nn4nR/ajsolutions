@@ -28,7 +28,7 @@
                 axios.get('/getNCE').then(response=>{
                     this.options = {
                         title: {
-                            text: "NCE",
+                            text: "NCE :Nivel de Cumplimiento de Evaluacion",
                             align: 'left',
                             margin: 10,
                             offsetX: 0,
