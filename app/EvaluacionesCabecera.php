@@ -3,11 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\softdeletes;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class EvaluacionesCabecera extends Model
 {
-    use softdeletes;
+    use SoftDeletes;
     protected $fillable = ['evaluacion_id','trabajador_dni','estado','hora','fecha'];
     protected $guarded = ['id'];
     public $timestamps = false;

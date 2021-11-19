@@ -3,11 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\softdeletes;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Trabajador extends Model
 {
-    use softdeletes;
+    use SoftDeletes;
     protected $table = "trabajadores";
     protected $keyType  = 'string';
     protected $primaryKey = 'dni';
