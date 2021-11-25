@@ -149,7 +149,7 @@ class ProyectoController extends Controller
 
     public function finishProyecto(Request $request)
     {
-        Proyecto::find($request->input('proyecto'))->update(['Estado'=>"FINALIZADO"]);
+        Proyecto::find($request->input('proyecto'))->update(['Estado'=>"COMPLETADO"]);
         foreach(Proyecto::find($request->input('proyecto'))->trabajadores as $trabajador)
         {
             Trabajador::find($trabajador['dni'])->update(['estado'=>'DISPONIBLE']);
@@ -161,5 +161,40 @@ class ProyectoController extends Controller
     public function getTrabajadores($id)
     {
         return Proyecto::where('id',$id)->with('trabajadores')->first()->trabajadores;
+    }
+
+    public function getIDC()
+    {
+        $trabajadores = Trabajador::with('proyectosHistorico')->get();
+        $meses = collect([]);
+        $datos = collect([]);
+        $enviar = collect([]);
+        foreach($trabajadores as $trabajador)
+        {
+            foreach($trabajador->proyectosHistorico as $historico)
+            {
+                $historico->mes = Carbon::parse($historico->started_at)->year."-".Carbon::parse($historico->started_at)->month;
+                $meses->push($historico->mes);
+            }
+        }
+        $meses = $meses->unique()->values();
+        foreach($trabajadores as $trabajador)
+        {
+            $aux = $trabajador->proyectosHistorico->groupBy('mes');
+            foreach($aux as $aux_s)
+            {
+                if(count($aux_s->where('Estado','COMPLETADO'))>=1)
+                {
+                    $datos->push(['mes'=>$aux_s[0]->mes,'valor'=>1]);
+                }
+            }
+        }
+        $datos = $datos->groupBy('mes');
+        $meses = $datos->keys();
+        foreach($datos as $dato)
+        {
+            $enviar->push(round(count($dato)/count($trabajadores)*100,2));
+        }
+        return compact('meses','enviar');
     }
 }

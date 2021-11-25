@@ -72,6 +72,7 @@ Vue.component('trabajadores-estados', require('./components/Trabajadores/Grafica
 Vue.component('evaluaciones-trabajadores-asignar', require('./components/Evaluaciones/Trabajadores/Asignar.vue').default);
 Vue.component('test-filters', require('./components/Evaluaciones/Trabajadores/Graficas/Filter.vue').default);
 Vue.component('nce-report', require('./components/Reportes/Nce.vue').default);
+Vue.component('report-component', require('./components/Reportes/Reportes.vue').default);
 
 
 //grupos de trabajo

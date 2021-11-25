@@ -18,6 +18,11 @@ class Trabajador extends Model
         return $this->belongsToMany('App\Proyecto')->withPivot('estado', 'comentario','deleted_at');
     }
 
+    public function proyectosHistorico()
+    {
+        return $this->belongsToMany('App\Proyecto')->withTrashed()->withPivot('estado', 'comentario','deleted_at');
+    }
+
     public function user()
     {
         return $this->belongsTo('App\User');

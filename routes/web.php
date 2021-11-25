@@ -69,7 +69,6 @@ Route::middleware('auth')->group(function () {
         Route::post('/evaluacion-trabajador','EvaluacionController@storEvaluacionTrabajador');
         Route::get('/evaluacion-trabajador/{id}','EvaluacionController@getResult');
         Route::get('/getNCE','EvaluacionController@getNCE');
-        
     });
 
     Route::name('factor.')->group(function () {
@@ -98,6 +97,7 @@ Route::middleware('auth')->group(function () {
         Route::delete('/proyecto/{proyecto}','ProyectoController@destroy');
         Route::get('/proyecto/{id}/edit','ProyectoController@edit');
         Route::get('/proyecto/{id}/trabajadores','ProyectoController@getTrabajadores');
+        Route::get('/getIDC','ProyectoController@getIDC');
     });
 
     Route::name('usuario.')->group(function () {
