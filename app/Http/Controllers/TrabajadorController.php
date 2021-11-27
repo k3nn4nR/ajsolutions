@@ -23,6 +23,16 @@ class TrabajadorController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function indexDeletes()
+    {
+        return Trabajador::onlyTrashed()->get();
+    }
+
+    /**
      * Display the Main View for Trabajador.
      *
      * @return View
@@ -160,5 +170,10 @@ class TrabajadorController extends Controller
             $puntajes->push([$cabecera->deleted_at->valueOf(),$cabecera->detalles->sum('puntaje')]);
         }
         return compact('puntajes');
+    }
+
+    public function restore(Request $request)
+    {
+        Trabajador::withTrashed()->where('dni', $request->input('id'))->restore();
     }
 }

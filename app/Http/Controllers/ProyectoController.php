@@ -149,7 +149,7 @@ class ProyectoController extends Controller
 
     public function finishProyecto(Request $request)
     {
-        Proyecto::find($request->input('proyecto'))->update(['Estado'=>"COMPLETADO"]);
+        Proyecto::find($request->input('proyecto'))->update(['Estado'=>"FINALIZADO"]);
         foreach(Proyecto::find($request->input('proyecto'))->trabajadores as $trabajador)
         {
             Trabajador::find($trabajador['dni'])->update(['estado'=>'DISPONIBLE']);
@@ -173,7 +173,7 @@ class ProyectoController extends Controller
         {
             foreach($trabajador->proyectosHistorico as $historico)
             {
-                $historico->mes = Carbon::parse($historico->started_at)->year."-".Carbon::parse($historico->started_at)->month;
+                $historico->mes = Carbon::parse($historico->ended_at)->year."-".Carbon::parse($historico->ended_at)->month;
                 $meses->push($historico->mes);
             }
         }
@@ -183,7 +183,7 @@ class ProyectoController extends Controller
             $aux = $trabajador->proyectosHistorico->groupBy('mes');
             foreach($aux as $aux_s)
             {
-                if(count($aux_s->where('Estado','COMPLETADO'))>=1)
+                if(count($aux_s->where('Estado','FINALIZADO'))>=1)
                 {
                     $datos->push(['mes'=>$aux_s[0]->mes,'valor'=>1]);
                 }

@@ -1,26 +1,62 @@
 <template>
-    <v-data-table :items="trabajadores" :headers="headers" dense :search="search">
-        <template v-slot:top>
-            <v-toolbar flat>
-                <v-toolbar-title>Trabajadores</v-toolbar-title>
-                <v-divider class="mx-4" inset vertical ></v-divider>
-                <v-text-field v-model="search" label="Busqueda" dense />
-                <v-divider class="mx-4" inset vertical ></v-divider>
-                <trabajador-create v-on:getData="getData()"/>
-            </v-toolbar>
-        </template>
-        <template v-slot:item.photo="{ item }">
-            <v-img :src="getPhoto(item.photo)" max-height="50" max-width="70" ></v-img>
-        </template>
-        <template v-slot:item.acciones="{ item }">
-            <v-btn small class="error" @click="destroy(item)"><v-icon small>{{ "fas fa-trash" }}</v-icon></v-btn>
-        </template>
-    </v-data-table>
+
+    <v-card>
+        <v-toolbar color="cyan" dark flat >
+            <template v-slot:extension>
+                <v-tabs v-model="model" centered slider-color="yellow" >
+                    <v-tab :href="`#tab-1`" >
+                        Trabajadores Activos
+                    </v-tab>
+                      <v-tab :href="`#tab-2`" >
+                        Trabajadores Eliminados
+                    </v-tab>
+                </v-tabs>
+            </template>
+        </v-toolbar>
+
+        <v-tabs-items v-model="model">
+            <v-tab-item :value="`tab-1`" >
+                <v-card flat>
+                    <v-card-text>
+                        <v-data-table :items="trabajadores" :headers="headers" dense :search="search">
+                            <template v-slot:top>
+                                <v-toolbar flat>
+                                    <v-toolbar-title>Trabajadores</v-toolbar-title>
+                                    <v-divider class="mx-4" inset vertical ></v-divider>
+                                    <v-text-field v-model="search" label="Busqueda" dense />
+                                    <v-divider class="mx-4" inset vertical ></v-divider>
+                                    <trabajador-create v-on:getData="getData()"/>
+                                </v-toolbar>
+                            </template>
+                            <template v-slot:item.photo="{ item }">
+                                <v-img :src="getPhoto(item.photo)" max-height="50" max-width="70" ></v-img>
+                            </template>
+                            <template v-slot:item.acciones="{ item }">
+                                <v-btn small class="error" @click="destroy(item)"><v-icon small>{{ "fas fa-trash" }}</v-icon></v-btn>
+                            </template>
+                        </v-data-table>
+                    </v-card-text>
+                </v-card>
+            </v-tab-item>
+             <v-tab-item :value="`tab-2`" >
+                <v-card flat>
+                    <v-card-text>
+                        <trabajadores-eliminados/>
+                    </v-card-text>
+                </v-card>
+            </v-tab-item>
+        </v-tabs-items>
+    </v-card>
 </template>
 <script>
+    import TrabajadoresEliminados from '../Trabajadores/Trashed.vue'
     export default {
+        components:{
+            TrabajadoresEliminados,
+        },
         data(){
             return {
+                model: 'tab-1',
                 search:'',
                 trabajadores:[],
             };

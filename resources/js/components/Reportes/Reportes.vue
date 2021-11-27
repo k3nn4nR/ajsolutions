@@ -18,6 +18,9 @@
                     <v-tab  :href="`#tab-5`" >
                         Trabajadores Ingresos
                     </v-tab>
+                      <v-tab  :href="`#tab-6`" >
+                        Evaluaciones Trabajadores
+                    </v-tab>
                 </v-tabs>
             </template>
         </v-toolbar>
@@ -58,6 +61,13 @@
                     </v-card-text>
                 </v-card>
             </v-tab-item>
+            <v-tab-item :value="`tab-6`" >
+                <v-card flat>
+                    <v-card-text>
+                        <trabajadores-filter/>
+                    </v-card-text>
+                </v-card>
+            </v-tab-item>
         </v-tabs-items>
     </v-card>
 </template>
@@ -67,6 +77,8 @@
     import ProyectosEstado from '../Proyectos/Graficas/Estado.vue'
     import TrabajadoresEstado from '../Trabajadores/Graficas/Estado.vue'
     import TrabajadoresAnio from '../Trabajadores/Graficas/IngresoPorAnio.vue'
+    import TrabajadoresEstrella from '../Evaluaciones/Trabajadores/Graficas/Estrella.vue'
+    import TrabajadoresFilter from '../Evaluaciones/Trabajadores/Graficas/Filter.vue'
     export default {
         components:{
             Nce,
@@ -74,6 +86,8 @@
             ProyectosEstado,
             TrabajadoresEstado,
             TrabajadoresAnio,
+            TrabajadoresEstrella,
+            TrabajadoresFilter,
         },
         data () {
             return {
